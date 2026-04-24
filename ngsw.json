@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1776994613406,
-  "index": "D:/Program Files/Git/demo-app/index.html",
+  "timestamp": 1777041453206,
+  "index": "/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -11,12 +11,12 @@
         "ignoreVary": true
       },
       "urls": [
-        "D:/Program Files/Git/demo-app/index.html",
-        "D:/Program Files/Git/demo-app/main-QZPMCUIH.js",
-        "D:/Program Files/Git/demo-app/manifest.webmanifest",
-        "D:/Program Files/Git/demo-app/polyfills-WB47SS4W.js",
-        "D:/Program Files/Git/demo-app/scripts-TTWY4XDY.js",
-        "D:/Program Files/Git/demo-app/styles-462OGA5F.css"
+        "/index.html",
+        "/main-LKGPW2UT.js",
+        "/manifest.webmanifest",
+        "/polyfills-RONBT3RY.js",
+        "/scripts-TTWY4XDY.js",
+        "/styles-ALJQSQRQ.css"
       ],
       "patterns": []
     },
@@ -28,28 +28,28 @@
         "ignoreVary": true
       },
       "urls": [
-        "D:/Program Files/Git/demo-app/assets/images/SyncVizion-logo.png",
-        "D:/Program Files/Git/demo-app/assets/images/background.jpg",
-        "D:/Program Files/Git/demo-app/assets/images/demo/logo.jpeg",
-        "D:/Program Files/Git/demo-app/assets/images/demo/square-logo.jpeg",
-        "D:/Program Files/Git/demo-app/assets/images/pokemon-back.png"
+        "/assets/images/SyncVizion-logo.png",
+        "/assets/images/background.jpg",
+        "/assets/images/demo/logo.jpeg",
+        "/assets/images/demo/square-logo.jpeg",
+        "/assets/images/pokemon-back.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "D:/Program Files/Git/demo-app/assets/images/SyncVizion-logo.png": "3234c4a7baeca51f7d98c2b0efd965b0edb56bc2",
-    "D:/Program Files/Git/demo-app/assets/images/background.jpg": "161bc1a1c88e60af965aba419f8a69fbdb4be7c6",
-    "D:/Program Files/Git/demo-app/assets/images/demo/logo.jpeg": "4b05c912d3ec57797e9cc55a0d86d1b5b58994e4",
-    "D:/Program Files/Git/demo-app/assets/images/demo/square-logo.jpeg": "3234c4a7baeca51f7d98c2b0efd965b0edb56bc2",
-    "D:/Program Files/Git/demo-app/assets/images/pokemon-back.png": "4236a31547a801f89eb0063d1c9f86aa5c4bca79",
-    "D:/Program Files/Git/demo-app/index.html": "11cbdda544182dfe57ef148fa5fb20609191c0fe",
-    "D:/Program Files/Git/demo-app/main-QZPMCUIH.js": "25287b4cab5f05976bc242b3d26e768bbf116b8f",
-    "D:/Program Files/Git/demo-app/manifest.webmanifest": "fc2ab69efcf6f1a5b249dbf37d5e4ccc320f667f",
-    "D:/Program Files/Git/demo-app/polyfills-WB47SS4W.js": "9e1377f3fbb3d68f18545d6a9803f7fd4a225679",
-    "D:/Program Files/Git/demo-app/scripts-TTWY4XDY.js": "59aa489af6324127a3d773836250da08639d4b26",
-    "D:/Program Files/Git/demo-app/styles-462OGA5F.css": "05bd565ca79e92d253a7cf761c31fef4e4a9eacd"
+    "/assets/images/SyncVizion-logo.png": "3234c4a7baeca51f7d98c2b0efd965b0edb56bc2",
+    "/assets/images/background.jpg": "161bc1a1c88e60af965aba419f8a69fbdb4be7c6",
+    "/assets/images/demo/logo.jpeg": "4b05c912d3ec57797e9cc55a0d86d1b5b58994e4",
+    "/assets/images/demo/square-logo.jpeg": "3234c4a7baeca51f7d98c2b0efd965b0edb56bc2",
+    "/assets/images/pokemon-back.png": "4236a31547a801f89eb0063d1c9f86aa5c4bca79",
+    "/index.html": "3c4e1485fa37eb1c453172b3815e72f5c3e422ca",
+    "/main-LKGPW2UT.js": "80b27d2341aa2f19aedb8628f664d4002a84d0f4",
+    "/manifest.webmanifest": "fc2ab69efcf6f1a5b249dbf37d5e4ccc320f667f",
+    "/polyfills-RONBT3RY.js": "e2fc940497ab57ce4c244eac30093b88a7f37d06",
+    "/scripts-TTWY4XDY.js": "59aa489af6324127a3d773836250da08639d4b26",
+    "/styles-ALJQSQRQ.css": "73d32045a6d4d4b361421059459ed1383271f763"
   },
   "navigationUrls": [
     {
