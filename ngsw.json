@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1776994399934,
+  "timestamp": 1776994613406,
   "index": "D:/Program Files/Git/demo-app/index.html",
   "assetGroups": [
     {
@@ -12,11 +12,11 @@
       },
       "urls": [
         "D:/Program Files/Git/demo-app/index.html",
-        "D:/Program Files/Git/demo-app/main-PYIUXDMA.js",
+        "D:/Program Files/Git/demo-app/main-QZPMCUIH.js",
         "D:/Program Files/Git/demo-app/manifest.webmanifest",
         "D:/Program Files/Git/demo-app/polyfills-WB47SS4W.js",
         "D:/Program Files/Git/demo-app/scripts-TTWY4XDY.js",
-        "D:/Program Files/Git/demo-app/styles-5YNNQGKB.css"
+        "D:/Program Files/Git/demo-app/styles-462OGA5F.css"
       ],
       "patterns": []
     },
@@ -32,8 +32,7 @@
         "D:/Program Files/Git/demo-app/assets/images/background.jpg",
         "D:/Program Files/Git/demo-app/assets/images/demo/logo.jpeg",
         "D:/Program Files/Git/demo-app/assets/images/demo/square-logo.jpeg",
-        "D:/Program Files/Git/demo-app/assets/images/pokemon-back.png",
-        "D:/Program Files/Git/demo-app/media/background-QAL2WIGK.jpg"
+        "D:/Program Files/Git/demo-app/assets/images/pokemon-back.png"
       ],
       "patterns": []
     }
@@ -45,13 +44,12 @@
     "D:/Program Files/Git/demo-app/assets/images/demo/logo.jpeg": "4b05c912d3ec57797e9cc55a0d86d1b5b58994e4",
     "D:/Program Files/Git/demo-app/assets/images/demo/square-logo.jpeg": "3234c4a7baeca51f7d98c2b0efd965b0edb56bc2",
     "D:/Program Files/Git/demo-app/assets/images/pokemon-back.png": "4236a31547a801f89eb0063d1c9f86aa5c4bca79",
-    "D:/Program Files/Git/demo-app/index.html": "7d9a3c06a9f1829166db528b48bb42059dc01972",
-    "D:/Program Files/Git/demo-app/main-PYIUXDMA.js": "7d917821c76d93f1a8507ec6eb577527abf5ab80",
+    "D:/Program Files/Git/demo-app/index.html": "11cbdda544182dfe57ef148fa5fb20609191c0fe",
+    "D:/Program Files/Git/demo-app/main-QZPMCUIH.js": "25287b4cab5f05976bc242b3d26e768bbf116b8f",
     "D:/Program Files/Git/demo-app/manifest.webmanifest": "fc2ab69efcf6f1a5b249dbf37d5e4ccc320f667f",
-    "D:/Program Files/Git/demo-app/media/background-QAL2WIGK.jpg": "161bc1a1c88e60af965aba419f8a69fbdb4be7c6",
     "D:/Program Files/Git/demo-app/polyfills-WB47SS4W.js": "9e1377f3fbb3d68f18545d6a9803f7fd4a225679",
     "D:/Program Files/Git/demo-app/scripts-TTWY4XDY.js": "59aa489af6324127a3d773836250da08639d4b26",
-    "D:/Program Files/Git/demo-app/styles-5YNNQGKB.css": "bc739a8c72b9bdc2bcd5aa1d40b1db0ee3099939"
+    "D:/Program Files/Git/demo-app/styles-462OGA5F.css": "05bd565ca79e92d253a7cf761c31fef4e4a9eacd"
   },
   "navigationUrls": [
     {
