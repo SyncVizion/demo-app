@@ -1,0 +1,56 @@
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 8px;
+  padding: 4px 12px;
+  gap: 8px;
+  background: #ffffff;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #acacac;
+  cursor: pointer;
+  outline: none;
+
+  &__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &__icon {
+    display: inline-block !important;
+    line-height: 1 !important;
+    font-size: 18px !important;
+    height: 18px !important;
+    width: 18px !important;
+  }
+
+  &--dashed {
+    border-style: dashed;
+
+    &:hover {
+      border-style: solid;
+      background-color: #eeeeee;
+    }
+  }
+
+  &--selected {
+    background: #d5d7d8;
+  }
+
+  &:hover:not(.chip--dashed) {
+    outline: 1px solid #acacac;
+  }
+
+  &:focus-visible:not([disabled]) {
+    outline: 3px solid #0068d6 !important;
+    outline-offset: 1px !important;
+  }
+
+  &[disabled] {
+    opacity: 40%;
+    pointer-events: none;
+  }
+}

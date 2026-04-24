@@ -1,0 +1,37 @@
+@if (appCard.collapsible()) {
+  <mat-icon
+    class="card__header__toggle-icon"
+    [ngClass]="{
+      'card__header__toggle-icon--flip': appCard.expanded,
+    }"
+  >
+    keyboard_arrow_down
+  </mat-icon>
+}
+@if (appLeftIcons().length > 0) {
+  <div class="card__header__icons card__header__icons--left">
+    <ng-content select="appPrefix, [appPrefix]"></ng-content>
+  </div>
+}
+
+<div class="card__header__content">
+  @if (title()) {
+    <div
+      [matTooltip]="error() ? errorMessage() : ''"
+      matTooltipPosition="above"
+      [matBadge]="error() ? '!' : ''"
+      [matBadgeOverlap]="false"
+      class="card__header__title"
+    >
+      {{ title() }}
+    </div>
+  }
+
+  <ng-content></ng-content>
+
+  @if (appRightIcons().length > 0) {
+    <div class="card__header__icons">
+      <ng-content select="appSuffix, [appSuffix]"></ng-content>
+    </div>
+  }
+</div>

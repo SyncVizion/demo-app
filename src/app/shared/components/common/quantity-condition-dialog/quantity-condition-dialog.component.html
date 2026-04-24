@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>{{ data?.title ? data.title : 'Add User' }}</h1>
+@if (loading) {
+  <div class="dialog-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+} @else {
+  <div mat-dialog-content class="dialog-content">
+    @if (form) {
+      <form [formGroup]="form" class="form">
+        <div class="row">
+          <app-form-field-single-select
+            label="Condition"
+            [items]="conditions"
+            formControlName="condition"
+          ></app-form-field-single-select>
+          <app-form-field-single-select
+            label="Card Type"
+            [items]="cardTypes"
+            formControlName="cardType"
+          ></app-form-field-single-select>
+          <h3 class="text-center">Quantity</h3>
+          <div class="mb-3 quantity-condition-container">
+            <button
+              [disabled]="form?.controls?.quantity?.value <= 1"
+              app-button-icon
+              size="large"
+              variant="brand"
+              emphasis="primary"
+              (click)="form?.controls?.quantity?.setValue(form?.controls?.quantity?.value - 1)"
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+            <h4>{{ form?.controls?.quantity?.value }}</h4>
+            <button
+              app-button-icon
+              variant="brand"
+              emphasis="primary"
+              (click)="form?.controls?.quantity?.setValue(form?.controls?.quantity?.value + 1)"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+      </form>
+    }
+  </div>
+  <div class="action-bar action-bar--dialog">
+    <button app-button variant="subtle" emphasis="secondary" (click)="close()">Cancel</button>
+    <button
+      app-button
+      variant="brand"
+      emphasis="primary"
+      [disabled]="form?.invalid || form?.pending || form?.pristine"
+      (click)="submit()"
+    >
+      {{ data?.saveButtonText ? data.saveButtonText : 'Save' }}
+    </button>
+  </div>
+}

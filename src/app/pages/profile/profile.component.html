@@ -1,0 +1,133 @@
+<div class="d-flex align-items-center justify-content-between mb-4 mt-2">
+  <span class="h2 m-none">Profile</span>
+  <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+</div>
+
+<div class="d-flex align-items-center flex-column mb-4 justify-content-center">
+  <div class="profile-chip">{{ (user?.firstName?.[0] ?? '') + (user?.lastName?.[0] ?? '') }}</div>
+  <span class="h2 m-0 mt-3">{{ (user?.firstName ?? '') + ' ' + (user?.lastName ?? '') }}</span>
+  <span>{{ user?.email }}</span>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <app-card>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="h6 m-0">Dark Theme</p>
+        <mat-slide-toggle [checked]="user.theme === AppTheme.DARK" (toggleChange)="toggleTheme()"></mat-slide-toggle>
+      </div>
+    </app-card>
+    <app-card>
+      <div class="d-flex justify-content-between align-items-center flex-column">
+        <div class="d-flex align-items-baseline justify-content-between w-100 mb-3">
+          <h2 class="mb-0">Subscription</h2>
+          <button app-button variant="brand" emphasis="secondary" [matMenuTriggerFor]="managePlanMenu">
+            Manage Plan
+          </button>
+        </div>
+        <div class="d-flex justify-content-start mb-3 w-100">
+          <div
+            class="d-flex align-items-center gap-2"
+            *skeletonLoading="subLoading; width: 72; height: 16; align: 'left'"
+          >
+            @if (stripeSub?.status === 'active') {
+              <mat-icon>check_circle</mat-icon>
+            } @else if (stripeSub?.status === 'trialing') {
+              <mat-icon>schedule</mat-icon>
+            } @else {
+              <mat-icon>block</mat-icon>
+            }
+            <span>
+              {{ stripeSub?.status | titlecase }}
+            </span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-start mb-3 w-100">
+          <div
+            class="d-flex align-items-center gap-2"
+            *skeletonLoading="subLoading; width: 150; height: 16; align: 'left'"
+          >
+            <mat-icon>credit_card</mat-icon>
+            <span> ${{ stripeSub?.amount }} Per {{ stripeSub?.billingInterval | titlecase }} </span>
+          </div>
+        </div>
+        <div class="d-flex justify-content-start w-100">
+          <div
+            class="d-flex align-items-center gap-2"
+            *skeletonLoading="subLoading; width: 180; height: 16; align: 'left'"
+          >
+            <mat-icon>calendar_month</mat-icon>
+            <span>
+              {{
+                !stripeSub?.cancellationDate
+                  ? 'Renews ' + (stripeSub?.renewalDate | date: 'longDate')
+                  : 'Expires ' + (stripeSub?.cancellationDate | date: 'longDate')
+              }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onEditUser()" (keydown.enter)="onEditUser()">
+    <mat-icon>person_edit</mat-icon>
+    <span>Edit Profile</span>
+  </button>
+  <button mat-menu-item (click)="logout()" (keydown.enter)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>
+
+<mat-menu #managePlanMenu="matMenu">
+  <button mat-menu-item (click)="openNewPaymentDialog()">
+    <mat-icon>add_card</mat-icon>
+    <span>Change Payment Method</span>
+  </button>
+  @if (stripeSub?.cancellationDate) {
+    <button mat-menu-item [popoverTriggerFor]="changeSubscriptionPopover">
+      <mat-icon>autorenew</mat-icon>
+      <span>Renew Subscription</span>
+    </button>
+  } @else {
+    <button mat-menu-item [popoverTriggerFor]="changeSubscriptionPopover">
+      <mat-icon>cancel</mat-icon>
+      <span>Cancel Subscription</span>
+    </button>
+  }
+</mat-menu>
+
+<app-popover-panel
+  #changeSubscriptionPopover="appPopoverPanel"
+  position="center"
+  backgroundColor="#252c46"
+  width="250px"
+>
+  <ng-template>
+    <app-popover-panel-content>
+      <p class="fs-6">
+        Are you sure you want to {{ stripeSub?.cancellationDate ? 'renew' : 'cancel' }} your subscription?
+      </p>
+      <div class="d-flex flex-column">
+        <button
+          class="mb-3"
+          app-button
+          variant="brand"
+          emphasis="primary"
+          (click)="changeSub(changeSubscriptionPopover)"
+        >
+          {{ stripeSub?.cancellationDate ? 'Renew Subscription' : 'Cancel Subscription' }}
+        </button>
+        @if (!stripeSub?.cancellationDate) {
+          <button app-button variant="subtle" emphasis="secondary" (click)="changeSubscriptionPopover.close()">
+            {{ 'Keep Subscription' }}
+          </button>
+        }
+      </div>
+      <app-action-bar> </app-action-bar>
+    </app-popover-panel-content>
+  </ng-template>
+</app-popover-panel>

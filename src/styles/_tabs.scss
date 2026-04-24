@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+
+.app-tab-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.app-tab-label-small-font .mdc-tab__content {
+  font-size: 14px !important;
+}
+
+.app-tab-routing-manager-container {
+  @include mat.tabs-overrides(
+    (
+      label-text-size: 18px,
+      active-label-text-color: var(--mat-sys-primary),
+      active-hover-label-text-color: var(--mat-sys-primary),
+      active-focus-label-text-color: var(--mat-sys-primary),
+    )
+  );
+
+  > mat-tab-header {
+    border-bottom: 1px solid #e0e2ec;
+  }
+}

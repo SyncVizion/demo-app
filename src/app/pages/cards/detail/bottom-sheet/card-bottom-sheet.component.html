@@ -1,0 +1,10 @@
+<div class="vw-100">
+  <div class="mb-4" style="justify-self: center">
+    @let image = data?.image;
+    @if (image?.endsWith('.png') || image?.endsWith('.jpg')) {
+      <img class="card-image-preview" [src]="image" alt="{{ data?.name }}" />
+    } @else {
+      <img class="card-image-preview" [src]="image + '/high.webp'" alt="{{ data?.name }}" />
+    }
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="sidenav-drawer">
+  <div class="sidenav-drawer__logo">
+    <img [src]="logoUrl" alt="Company Logo" />
+  </div>
+
+  <div class="sidenav-drawer__pages">
+    @for (navItem of navigationConfig; track navItem) {
+      @if (navItem?.restriction) {
+        <ng-container *ngTemplateOutlet="navContent; context: { $implicit: navItem }"></ng-container>
+      } @else {
+        <ng-container *ngTemplateOutlet="navContent; context: { $implicit: navItem }"></ng-container>
+      }
+    }
+  </div>
+</div>
+
+<ng-template #navContent let-navItem>
+  @if (navItem.submenu) {
+    <ik-sidenav-drawer-dropdown [navItem]="navItem" (nestedRouted)="routed.emit($event)"></ik-sidenav-drawer-dropdown>
+  } @else {
+    <div
+      class="sidenav-drawer__category"
+      [routerLink]="navItem.route"
+      routerLinkActive="sidenav-drawer__category--active"
+      (click)="onRoute(navItem.route)"
+      (keydown.enter)="onRoute(navItem.route)"
+    >
+      @if (navItem?.icon) {
+        <mat-icon>{{ navItem.icon }}</mat-icon>
+      }
+
+      <span class="sidenav-drawer__category__title">{{ navItem.name }}</span>
+    </div>
+  }
+</ng-template>

@@ -1,0 +1,41 @@
+<div
+  class="file-upload"
+  ng2FileDrop
+  [uploader]="uploader"
+  (fileOver)="fileOver($event)"
+  [ngClass]="{ 'file-upload--file-over': hasFileOver }"
+>
+  <input
+    #file
+    hidden="true"
+    type="file"
+    ng2FileSelect
+    [uploader]="uploader"
+    [accept]="acceptedExtensions()"
+    (change)="onChange($event)"
+    [multiple]="multiple()"
+  />
+
+  <div class="file-upload__options">
+    <mat-icon class="file-upload__upload-icon">cloud_upload</mat-icon>
+    <div class="file-upload__drag-drop">Drop Image Here</div>
+    <div class="file-upload__or">or</div>
+    <button app-button variant="brand" emphasis="secondary" (click)="file.click()" (keydown)="file.click()">
+      Snap or Choose Image
+    </button>
+  </div>
+
+  @for (fileItem of uploader.queue; track fileItem) {
+    <div class="file-upload__selected-file">
+      <img [src]="fileItem.url" alt="File Preview" class="file-upload__preview" />
+      <mat-form-field class="w-100" floatLabel="always" appearance="outline" subscriptSizing="dynamic">
+        <mat-label class="text-xl"> Label </mat-label>
+        <input matInput [value]="fileItem?.file?.name" (input)="fileItem.file.name = $event.target.value" />
+        <mat-error>Label is Required</mat-error>
+      </mat-form-field>
+      <mat-icon class="file-upload__remove-icon text-danger" (click)="remove(fileItem)" (keydown)="remove(fileItem)">
+        delete
+      </mat-icon>
+    </div>
+  }
+</div>

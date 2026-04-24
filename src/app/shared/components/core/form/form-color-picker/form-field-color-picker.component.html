@@ -1,0 +1,34 @@
+<mat-form-field
+  floatLabel="always"
+  appearance="outline"
+  [class]="{ 'w-100': true, 'pb-sm': bottomGap() }"
+  [subscriptSizing]="subscriptSizing()"
+>
+  <mat-label class="text-xl"> {{ label() }}</mat-label>
+  <input
+    #matFormInput
+    matInput
+    [type]="type()"
+    [name]="name()"
+    [placeholder]="placeholder()"
+    [inputMode]="inputmode()"
+    [formControlName]="formControlName()"
+    [readonly]="true"
+  />
+
+  <ngx-colors
+    matSuffix
+    [disabled]="readonly()"
+    ngx-colors-trigger
+    class="mr-xxl"
+    format="hex"
+    colorsAnimation="popup"
+    colorPickerControls="no-alpha"
+    [hideTextInput]="true"
+    [(ngModel)]="value"
+    (change)="onColorChange($event)"
+    [ngModelOptions]="{ standalone: true }"
+  >
+  </ngx-colors>
+  <mat-error>{{ errorMessage() }}</mat-error>
+</mat-form-field>

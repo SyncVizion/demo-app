@@ -1,0 +1,18 @@
+<app-header title="Users">
+  <button app-button iconOnSmallScreen variant="brand" emphasis="primary" (click)="onAddUser()">
+    <mat-icon>add_circle</mat-icon>
+    Add User
+  </button>
+</app-header>
+
+<app-grid (rowClick)="onRowClick($event)" [dataloader]="dataLoader">
+  <app-grid-filter-bar>
+    <app-grid-filter-search class="w-100" placeholder="Search by First Name, Last Name, Email"></app-grid-filter-search>
+  </app-grid-filter-bar>
+
+  <app-grid-column field="firstName" label="First Name"></app-grid-column>
+  <app-grid-column field="lastName" label="Last name"></app-grid-column>
+  <app-grid-column field="email" label="Email"></app-grid-column>
+
+  <app-grid-pager pageSize="10" key="Users"></app-grid-pager>
+</app-grid>

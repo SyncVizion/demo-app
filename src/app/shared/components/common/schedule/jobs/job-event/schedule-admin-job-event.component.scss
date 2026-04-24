@@ -1,0 +1,63 @@
+@use '../../../../../../../styles/variables' as var;
+
+:host(.schedule-job-event) {
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  color: #2a2a2a;
+  border-radius: 6px;
+  padding: 2px 4px;
+  font-size: 14px;
+  border-left: 4px solid black;
+  transition: all 0.2s ease-in-out;
+}
+
+:host(.schedule-job-event__placeholder) {
+  position: absolute;
+  pointer-events: none;
+  opacity: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.schedule-job-event {
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  &__account {
+    font-size: 14px;
+    opacity: 80%;
+    margin-bottom: 2px;
+    display: block;
+  }
+
+  &__status {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    display: block;
+  }
+
+  &__time {
+    opacity: 65%;
+    font-size: 14px;
+    display: block;
+  }
+}
+
+@media screen and (max-width: var.$screen-sm-max) {
+  .schedule-job-event__title {
+    font-size: 14px;
+  }
+    .schedule-job-event__account {
+    font-size: 12px;
+  }
+    .schedule-job-event__time {
+    font-size: 12px;
+  }
+}

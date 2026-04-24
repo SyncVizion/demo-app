@@ -1,0 +1,54 @@
+import { Injectable, inject } from '@angular/core';
+
+/**
+ * URL Service
+ *
+ * @author Sam Butler
+ * @since Dec 15, 2020
+ */
+@Injectable({
+  providedIn: 'root',
+})
+export class UrlService {
+  private readonly env = inject<any>('env' as any);
+
+  /**
+   * Get's the full API URL
+   *
+   * @returns string of the full API url
+   */
+  getAPIUrl(): string {
+    if (this.env.isLocal) {
+      return `http://${this.env.apiUrl}`;
+      // return `${this.env.apiUrl}`;
+    } else {
+      return `https://${this.env.apiUrl}`;
+    }
+  }
+
+  /**
+   * Get's the full Site URL
+   *
+   * @returns string of the full API url
+   */
+  getSiteUrl(): string {
+    if (this.env.isLocal) {
+      return `http://${this.env.siteUrl}`;
+    } else {
+      return `https://${this.env.siteUrl}`;
+    }
+  }
+
+  /**
+   * Gets the API for socket calls
+   *
+   * @returns The url for the api web socket.
+   */
+  getSocketAPIUrl() {
+    if (this.env.isLocal) {
+      return `ws://${this.env.apiUrl}/subscription/socket`;
+    } else {
+      return `wss://${this.env.apiUrl}/subscription/socket`;
+    }
+  }
+}

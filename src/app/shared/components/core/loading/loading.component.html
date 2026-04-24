@@ -1,0 +1,37 @@
+@if (type() === 'default') {
+  <div
+    class="default-loader"
+    [ngStyle]="{
+      width: size(),
+      height: size(),
+      'border-width': thickness(),
+      'border-top-color': backgroundColor(),
+      'border-bottom-color': backgroundColor(),
+      'border-left-color': backgroundColor(),
+      margin: margin(),
+    }"
+  ></div>
+}
+
+@if (type() === 'ellipsis') {
+  <div class="ellipsis-loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+}
+
+@if (type() === 'double') {
+  <div
+    class="double-loader"
+    [ngStyle]="{
+      width: size(),
+      height: size(),
+      'border-width': thickness(),
+      'border-top-color': backgroundColor(),
+      'border-bottom-color': backgroundColor(),
+      margin: margin(),
+    }"
+  ></div>
+}

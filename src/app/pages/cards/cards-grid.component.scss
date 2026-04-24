@@ -1,0 +1,17 @@
+@use '../../../styles/variables' as var;
+
+.grid-card {
+  &__image-container {
+    align-content: center;
+    min-height: 209px;
+  }
+
+  &__image {
+    max-width: 152px;
+  }
+
+  &__price-button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}

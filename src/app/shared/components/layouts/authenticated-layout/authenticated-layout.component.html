@@ -1,0 +1,9 @@
+<div class="app-container-mobile">
+  <router-outlet></router-outlet>
+  @if (isVerified && userExists) {
+    <app-mobile-nav></app-mobile-nav>
+  }
+</div>
+
+<!-- <app-user-notification></app-user-notification>
+<app-app-reload-notification (newAppVersion)="newAppVersion = true"></app-app-reload-notification> -->

@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Update Payment Method</h1>
+@if (loading && !elementsOptions) {
+  <div class="dialog-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+} @else {
+  <div mat-dialog-content class="dialog-content">
+    <ngx-stripe-elements [stripe]="stripeClient.stripe" [elementsOptions]="elementsOptions">
+      <ngx-stripe-payment [options]="paymentElementOptions" />
+    </ngx-stripe-elements>
+  </div>
+  <div class="action-bar action-bar--dialog">
+    <button app-button variant="subtle" emphasis="secondary" (click)="close()">Cancel</button>
+    <button
+      app-button
+      variant="brand"
+      emphasis="primary"
+      [disabled]="form?.invalid || form?.pending || form?.pristine"
+      (click)="submit()"
+    >
+      {{ 'Submit' }}
+    </button>
+  </div>
+}

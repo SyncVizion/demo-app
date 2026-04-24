@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Update Quantity</h1>
+@if (loading) {
+  <div class="dialog-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+} @else {
+  <div mat-dialog-content class="dialog-content">
+    @if (form) {
+      <form [formGroup]="form" class="form">
+        <app-form-field-input
+          label="Quantity"
+          inputmode="numeric"
+          type="number"
+          [maxlength]="3"
+          formControlName="quantity"
+        >
+        </app-form-field-input>
+      </form>
+    }
+  </div>
+  <div class="action-bar action-bar--dialog">
+    <button app-button variant="subtle" emphasis="secondary" (click)="close()">Cancel</button>
+    <button
+      app-button
+      variant="brand"
+      emphasis="primary"
+      [disabled]="form?.invalid || form?.pending || form?.pristine"
+      (click)="completeSave()"
+    >
+      {{ 'Save' }}
+    </button>
+  </div>
+}

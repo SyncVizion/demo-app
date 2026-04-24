@@ -1,0 +1,71 @@
+@use 'variables' as var;
+
+.header {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  &__text {
+    display: inline-block;
+    text-align: center;
+    line-height: 48px;
+    font-size: var.$font-size-header-lg;
+    font-family: emoji, sans-serif;
+    font-weight: var.$font-weight-semi-bold;
+    color: var(--mat-text-color);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__title-content {
+    max-width: 70%;
+    display: flex;
+    align-items: center;
+    flex-grow: 3;
+    gap: 12px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  &--center {
+    justify-content: center !important;
+  }
+}
+
+@media screen and (max-width: var.$header-screen-lg-max) {
+  .header {
+    &__title-content {
+      gap: 10px;
+    }
+
+    &__text {
+      line-height: var.$font-size-header-sm;
+      font-size: var.$font-size-header-xs;
+    }
+  }
+}
+
+@media screen and (max-width: var.$header-screen-sm-max) {
+  .header {
+    &__title-content {
+      gap: 8px;
+      max-width: 55%;
+    }
+
+    &__text {
+      line-height: 28px;
+      font-size: 24px;
+    }
+  }
+}

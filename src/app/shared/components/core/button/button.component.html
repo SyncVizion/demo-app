@@ -1,0 +1,22 @@
+@if (!loading()) {
+  <ng-content select="mat-icon:not([appSuffix])"> </ng-content>
+} @else {
+  <mat-spinner
+    [class]="{
+      'app-btn__loader--primary':
+        (variant() !== 'brand' && emphasis() !== 'primary') || (variant() === 'brand' && emphasis() === 'secondary'),
+      'app-btn__loader--secondary': emphasis() !== 'secondary' && (variant() === 'brand' || variant() === 'subtle'),
+      'app-btn--filled': filled(),
+    }"
+    [diameter]="size() === 'small' ? 20 : 24"
+    strokeWidth="2.5"
+  ></mat-spinner>
+}
+
+@if (!iconOnSmallScreen() || (iconOnSmallScreen() && !onSmallScreen)) {
+  <span class="app-btn__text">
+    <ng-content></ng-content>
+  </span>
+
+  <ng-content select="mat-icon[appSuffix]"> </ng-content>
+}

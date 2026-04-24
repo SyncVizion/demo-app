@@ -1,0 +1,15 @@
+<div class="d-flex align-items-center justify-content-between mb-4 mt-2">
+  <span class="h2 m-none">Payment Methods</span>
+</div>
+
+<div class="row">
+  @for (card of paymentMethods; track card) {
+    <app-card>
+      <div class="d-flex flex-column">
+        <span>**** **** **** {{ card.last4 }}</span>
+        <span>Expires: {{ card.expireMonth }}/{{ card.expireYear }}</span>
+        {{ card.brand }}
+      </div>
+    </app-card>
+  }
+</div>

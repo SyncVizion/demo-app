@@ -1,0 +1,38 @@
+@use '../../../styles/variables' as var;
+
+.card-image-container {
+  min-height: 240px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.card-image-preview {
+  max-width: 20vw;
+}
+
+.card-container-buffer {
+  height: 70px;
+  width: 100%;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+}
+
+.horizontal-card {
+  &__content {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+}
+
+.virtual-card__loader {
+  &__card-header {
+    min-height: 61px;
+  }
+}

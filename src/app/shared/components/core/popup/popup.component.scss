@@ -1,0 +1,14 @@
+.base-snackbar {
+  &__message {
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+    overflow: auto;
+  }
+
+  &__close-icon {
+    height: auto;
+    width: auto;
+    padding: 0;
+  }
+}

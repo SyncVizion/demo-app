@@ -1,0 +1,16 @@
+:host(.schedule-time-slots) {
+  display: grid;
+  height: 100%;
+}
+
+.schedule-time-slots__item {
+  position: relative;
+  text-align: center;
+  opacity: 75%;
+  width: 50px;
+  display: flex;
+  margin-top: -10px;
+  justify-content: center;
+  font-size: 14px;
+  color: #333;
+}

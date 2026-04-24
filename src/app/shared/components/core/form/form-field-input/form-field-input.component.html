@@ -1,0 +1,29 @@
+<mat-form-field
+  floatLabel="always"
+  appearance="outline"
+  [class]="{ 'w-100': true, 'pb-sm': bottomGap() }"
+  [subscriptSizing]="subscriptSizing()"
+>
+  @if (showLabel()) {
+    <mat-label class="text-xl"> {{ label() }}</mat-label>
+  }
+  <input
+    matInput
+    [type]="type()"
+    [name]="name()"
+    [placeholder]="placeholder()"
+    [inputMode]="inputmode()"
+    [formControlName]="formControlName()"
+    [readonly]="readonly()"
+    [maxlength]="maxlength()"
+    (keyup.enter)="onEnter.emit()"
+  />
+  @if (icon()) {
+    <mat-icon class="pointer" matSuffix (click)="onIconClick()" (keydown)="onIconClick()">{{ icon() }}</mat-icon>
+  }
+  @if (loading() || control?.pending) {
+    <mat-spinner matSuffix class="mr-sm" [strokeWidth]="2" [diameter]="20"></mat-spinner>
+  }
+
+  <mat-error>{{ errorMessage() }}</mat-error>
+</mat-form-field>

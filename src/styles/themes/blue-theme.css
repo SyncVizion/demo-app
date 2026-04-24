@@ -1,0 +1,426 @@
+/* =======================
+   TYPOGRAPHY
+   ======================= */
+body {
+  /* Typography variables. Only used in the different typescale system variables. */
+  --mat-sys-brand-font-family: Roboto; /* The font-family to use for brand text. */
+  --mat-sys-plain-font-family: Roboto; /* The font-family to use for plain text. */
+  --mat-sys-bold-font-weight: 700; /* The font-weight to use for bold text. */
+  --mat-sys-medium-font-weight: 500; /* The font-weight to use for medium text. */
+  --mat-sys-regular-font-weight: 400; /* The font-weight to use for regular text. */
+
+  /* Typescale variables. */
+  /* Warning: Risk of reduced fidelity from using the composite typography tokens (ex. --mat-sys-body-large) since
+     tracking cannot be represented in the "font" property shorthand. Consider using the discrete properties instead. */
+  --mat-sys-body-large: var(--mat-sys-body-large-weight) var(--mat-sys-body-large-size) /
+    var(--mat-sys-body-large-line-height) var(--mat-sys-body-large-font);
+  --mat-sys-body-large-font: var(--mat-sys-plain-font-family);
+  --mat-sys-body-large-line-height: 1.5rem;
+  --mat-sys-body-large-size: 1rem;
+  --mat-sys-body-large-tracking: 0.031rem;
+  --mat-sys-body-large-weight: var(--mat-sys-regular-font-weight);
+
+  /* Body medium typescale */
+  --mat-sys-body-medium: var(--mat-sys-body-medium-weight) var(--mat-sys-body-medium-size) /
+    var(--mat-sys-body-medium-line-height) var(--mat-sys-body-medium-font);
+  --mat-sys-body-medium-font: var(--mat-sys-plain-font-family);
+  --mat-sys-body-medium-line-height: 1.25rem;
+  --mat-sys-body-medium-size: 0.875rem;
+  --mat-sys-body-medium-tracking: 0.016rem;
+  --mat-sys-body-medium-weight: var(--mat-sys-regular-font-weight);
+
+  /* Body small typescale */
+  --mat-sys-body-small: var(--mat-sys-body-small-weight) var(--mat-sys-body-small-size) /
+    var(--mat-sys-body-small-line-height) var(--mat-sys-body-small-font);
+  --mat-sys-body-small-font: var(--mat-sys-plain-font-family);
+  --mat-sys-body-small-line-height: 1rem;
+  --mat-sys-body-small-size: 0.75rem;
+  --mat-sys-body-small-tracking: 0.025rem;
+  --mat-sys-body-small-weight: var(--mat-sys-regular-font-weight);
+
+  /* Display large typescale */
+  --mat-sys-display-large: var(--mat-sys-display-large-weight) var(--mat-sys-display-large-size) /
+    var(--mat-sys-display-large-line-height) var(--mat-sys-display-large-font);
+  --mat-sys-display-large-font: var(--mat-sys-brand-font-family);
+  --mat-sys-display-large-line-height: 4rem;
+  --mat-sys-display-large-size: 3.562rem;
+  --mat-sys-display-large-tracking: -0.016rem;
+  --mat-sys-display-large-weight: var(--mat-sys-regular-font-weight);
+
+  /* Display medium typescale */
+  --mat-sys-display-medium: var(--mat-sys-display-medium-weight) var(--mat-sys-display-medium-size) /
+    var(--mat-sys-display-medium-line-height) var(--mat-sys-display-medium-font);
+  --mat-sys-display-medium-font: var(--mat-sys-brand-font-family);
+  --mat-sys-display-medium-line-height: 3.25rem;
+  --mat-sys-display-medium-size: 2.812rem;
+  --mat-sys-display-medium-tracking: 0;
+  --mat-sys-display-medium-weight: var(--mat-sys-regular-font-weight);
+
+  /* Display small typescale */
+  --mat-sys-display-small: var(--mat-sys-display-small-weight) var(--mat-sys-display-small-size) /
+    var(--mat-sys-display-small-line-height) var(--mat-sys-display-small-font);
+  --mat-sys-display-small-font: var(--mat-sys-brand-font-family);
+  --mat-sys-display-small-line-height: 2.75rem;
+  --mat-sys-display-small-size: 2.25rem;
+  --mat-sys-display-small-tracking: 0;
+  --mat-sys-display-small-weight: var(--mat-sys-regular-font-weight);
+
+  /* Headline large typescale */
+  --mat-sys-headline-large: var(--mat-sys-headline-large-weight) var(--mat-sys-headline-large-size) /
+    var(--mat-sys-headline-large-line-height) var(--mat-sys-headline-large-font);
+  --mat-sys-headline-large-font: var(--mat-sys-brand-font-family);
+  --mat-sys-headline-large-line-height: 2.5rem;
+  --mat-sys-headline-large-size: 2rem;
+  --mat-sys-headline-large-tracking: 0;
+  --mat-sys-headline-large-weight: var(--mat-sys-regular-font-weight);
+
+  /* Headline medium typescale */
+  --mat-sys-headline-medium: var(--mat-sys-headline-medium-weight) var(--mat-sys-headline-medium-size) /
+    var(--mat-sys-headline-medium-line-height) var(--mat-sys-headline-medium-font);
+  --mat-sys-headline-medium-font: var(--mat-sys-brand-font-family);
+  --mat-sys-headline-medium-line-height: 2.25rem;
+  --mat-sys-headline-medium-size: 1.75rem;
+  --mat-sys-headline-medium-tracking: 0;
+  --mat-sys-headline-medium-weight: var(--mat-sys-regular-font-weight);
+
+  /* Headline small typescale */
+  --mat-sys-headline-small: var(--mat-sys-headline-small-weight) var(--mat-sys-headline-small-size) /
+    var(--mat-sys-headline-small-line-height) var(--mat-sys-headline-small-font);
+  --mat-sys-headline-small-font: var(--mat-sys-brand-font-family);
+  --mat-sys-headline-small-line-height: 2rem;
+  --mat-sys-headline-small-size: 1.5rem;
+  --mat-sys-headline-small-tracking: 0;
+  --mat-sys-headline-small-weight: var(--mat-sys-regular-font-weight);
+
+  /* Label large typescale */
+  --mat-sys-label-large: var(--mat-sys-label-large-weight) var(--mat-sys-label-large-size) /
+    var(--mat-sys-label-large-line-height) var(--mat-sys-label-large-font);
+  --mat-sys-label-large-font: var(--mat-sys-plain-font-family);
+  --mat-sys-label-large-line-height: 1.25rem;
+  --mat-sys-label-large-size: 0.875rem;
+  --mat-sys-label-large-tracking: 0.006rem;
+  --mat-sys-label-large-weight: var(--mat-sys-medium-font-weight);
+  --mat-sys-label-large-weight-prominent: var(--mat-sys-bold-font-weight);
+
+  /* Label medium typescale */
+  --mat-sys-label-medium: var(--mat-sys-label-medium-weight) var(--mat-sys-label-medium-size) /
+    var(--mat-sys-label-medium-line-height) var(--mat-sys-label-medium-font);
+  --mat-sys-label-medium-font: var(--mat-sys-plain-font-family);
+  --mat-sys-label-medium-line-height: 1rem;
+  --mat-sys-label-medium-size: 0.75rem;
+  --mat-sys-label-medium-tracking: 0.031rem;
+  --mat-sys-label-medium-weight: var(--mat-sys-medium-font-weight);
+  --mat-sys-label-medium-weight-prominent: var(--mat-sys-bold-font-weight);
+
+  /* Label small typescale */
+  --mat-sys-label-small: var(--mat-sys-label-small-weight) var(--mat-sys-label-small-size) /
+    var(--mat-sys-label-small-line-height) var(--mat-sys-label-small-font);
+  --mat-sys-label-small-font: var(--mat-sys-plain-font-family);
+  --mat-sys-label-small-line-height: 1rem;
+  --mat-sys-label-small-size: 0.688rem;
+  --mat-sys-label-small-tracking: 0.031rem;
+  --mat-sys-label-small-weight: var(--mat-sys-medium-font-weight);
+
+  /* Title large typescale */
+  --mat-sys-title-large: var(--mat-sys-title-large-weight) var(--mat-sys-title-large-size) /
+    var(--mat-sys-title-large-line-height) var(--mat-sys-title-large-font);
+  --mat-sys-title-large-font: var(--mat-sys-brand-font-family);
+  --mat-sys-title-large-line-height: 1.75rem;
+  --mat-sys-title-large-size: 1.375rem;
+  --mat-sys-title-large-tracking: 0;
+  --mat-sys-title-large-weight: var(--mat-sys-regular-font-weight);
+
+  /* Title medium typescale */
+  --mat-sys-title-medium: var(--mat-sys-title-medium-weight) var(--mat-sys-title-medium-size) /
+    var(--mat-sys-title-medium-line-height) var(--mat-sys-title-medium-font);
+  --mat-sys-title-medium-font: var(--mat-sys-plain-font-family);
+  --mat-sys-title-medium-line-height: 1.5rem;
+  --mat-sys-title-medium-size: 1rem;
+  --mat-sys-title-medium-tracking: 0.009rem;
+  --mat-sys-title-medium-weight: var(--mat-sys-medium-font-weight);
+
+  /* Title small typescale */
+  --mat-sys-title-small: var(--mat-sys-title-small-weight) var(--mat-sys-title-small-size) /
+    var(--mat-sys-title-small-line-height) var(--mat-sys-title-small-font);
+  --mat-sys-title-small-font: var(--mat-sys-plain-font-family);
+  --mat-sys-title-small-line-height: 1.25rem;
+  --mat-sys-title-small-size: 0.875rem;
+  --mat-sys-title-small-tracking: 0.006rem;
+  --mat-sys-title-small-weight: var(--mat-sys-medium-font-weight);
+
+  /* ELEVATION SYSTEM VARIABLES */
+
+  /* Box shadow colors. Only used in the elevation level system variables. */
+  --mat-sys-umbra-color: color-mix(in srgb, var(--mat-sys-shadow), transparent 80%);
+  --mat-sys-penumbra-color: color-mix(in srgb, var(--mat-sys-shadow), transparent 86%);
+  --mat-sys-ambient-color: color-mix(in srgb, var(--mat-sys-shadow), transparent 88%);
+
+  /* Elevation level system variables. These are used as the value for box-shadow CSS property. */
+  --mat-sys-level0:
+    0px 0px 0px 0px var(--mat-sys-umbra-color), 0px 0px 0px 0px var(--mat-sys-penumbra-color),
+    0px 0px 0px 0px var(--mat-sys-ambient-color);
+  --mat-sys-level1:
+    0px 2px 1px -1px var(--mat-sys-umbra-color), 0px 1px 1px 0px var(--mat-sys-penumbra-color),
+    0px 1px 3px 0px var(--mat-sys-ambient-color);
+  --mat-sys-level2:
+    0px 3px 3px -2px var(--mat-sys-umbra-color), 0px 3px 4px 0px var(--mat-sys-penumbra-color),
+    0px 1px 8px 0px var(--mat-sys-ambient-color);
+  --mat-sys-level3:
+    0px 3px 5px -1px var(--mat-sys-umbra-color), 0px 6px 10px 0px var(--mat-sys-penumbra-color),
+    0px 1px 18px 0px var(--mat-sys-ambient-color);
+  --mat-sys-level4:
+    0px 5px 5px -3px var(--mat-sys-umbra-color), 0px 8px 10px 1px var(--mat-sys-penumbra-color),
+    0px 3px 14px 2px var(--mat-sys-ambient-color);
+  --mat-sys-level5:
+    0px 7px 8px -4px var(--mat-sys-umbra-color), 0px 12px 17px 2px var(--mat-sys-penumbra-color),
+    0px 5px 22px 4px var(--mat-sys-ambient-color);
+
+  /* SHAPE SYSTEM VARIABLES */
+  --mat-sys-corner-extra-large: 28px;
+  --mat-sys-corner-extra-large-top: 28px 28px 0 0;
+  --mat-sys-corner-extra-small: 4px;
+  --mat-sys-corner-extra-small-top: 4px 4px 0 0;
+  --mat-sys-corner-full: 9999px;
+  --mat-sys-corner-large: 16px;
+  --mat-sys-corner-large-end: 0 16px 16px 0;
+  --mat-sys-corner-large-start: 16px 0 0 16px;
+  --mat-sys-corner-large-top: 16px 16px 0 0;
+  --mat-sys-corner-medium: 12px;
+  --mat-sys-corner-none: 0;
+  --mat-sys-corner-small: 8px;
+
+  /* STATE SYSTEM VARIABLES */
+  --mat-sys-dragged-state-layer-opacity: 0.16;
+  --mat-sys-focus-state-layer-opacity: 0.12;
+  --mat-sys-hover-state-layer-opacity: 0.08;
+  --mat-sys-pressed-state-layer-opacity: 0.12;
+
+  /* Error palette variables */
+  --mat-sys-error: light-dark(#ba1a1a, #ffb4ab);
+  --mat-sys-on-error: light-dark(#ffffff, #690005);
+  --mat-sys-error-container: light-dark(#ffdad6, #93000a);
+  --mat-sys-on-error-container: light-dark(#410002, #ffdad6);
+}
+
+/* =======================
+   LIGHT THEME
+   ======================= */
+body.LIGHT {
+  color-scheme: light;
+
+  /* Primary palette */
+  --mat-sys-primary: #166fbe;
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: #d7e3ff;
+  --mat-sys-primary-active: #1464ab;
+  --mat-sys-on-primary-container: #001a33;
+  --mat-sys-inverse-primary: #7db7f5;
+  --mat-sys-primary-fixed: #d6e9ff;
+  --mat-sys-primary-fixed-dim: #a9d0fb;
+  --mat-sys-on-primary-fixed: #166fbe;
+  --mat-sys-on-primary-fixed-variant: #0f5fb0;
+  --mat-sys-primary-transparent: #1b86ea69;
+
+  /* Subtle palette */
+  --mat-sys-subtle: #6d6d6d;
+  --mat-sys-on-subtle: #ffffff;
+  --mat-sys-subtle-container: #7c7c7c;
+  --mat-sys-subtle-active: #626262;
+  --mat-sys-on-subtle-container: #ffffff;
+  --mat-sys-subtle-fixed: #d6d6d6;
+  --mat-sys-subtle-fixed-dim: #b0b0b0;
+  --mat-sys-on-subtle-fixed: #000000;
+  --mat-sys-on-subtle-fixed-variant: #606060;
+
+  /* Danger palette */
+  --mat-sys-danger: #ba1a1a;
+  --mat-sys-on-danger: #ffffff;
+  --mat-sys-danger-container: #c12424;
+  --mat-sys-danger-active: #a71717;
+  --mat-sys-on-danger-container: #ffffff;
+  --mat-sys-danger-fixed: #f9d8d8;
+  --mat-sys-danger-fixed-dim: #f0bebe;
+  --mat-sys-on-danger-fixed: #670000;
+  --mat-sys-on-danger-fixed-variant: #961515;
+
+  /* Tertiary palette */
+  --mat-sys-tertiary: #727785;
+  --mat-sys-on-tertiary: #5e616b;
+  --mat-sys-tertiary-container: #4e5158;
+  --mat-sys-on-tertiary-container: #320046;
+  --mat-sys-tertiary-fixed: #dfdfdf;
+  --mat-sys-tertiary-fixed-dim: #cacaca;
+  --mat-sys-on-tertiary-fixed: #320046;
+  --mat-sys-on-tertiary-fixed-variant: #6f1d8f;
+
+  /* Neutral palette */
+  --mat-sys-background: #f1f5f9;
+  --mat-sys-background-dim: #fff;
+  --mat-sys-on-background: #191c22;
+  --mat-sys-surface: #ffffff;
+  --mat-sys-surface-dim: #d8d9e3;
+  --mat-sys-surface-bright: #f9f9ff;
+  --mat-sys-surface-container-low: #f2f3fd;
+  --mat-sys-surface-container-lowest: #ffffff;
+  --mat-sys-surface-container: #ecedf7;
+  --mat-sys-surface-container-high: #e6e8f1;
+  --mat-sys-surface-container-highest: #e1e2ec;
+  --mat-sys-on-surface: #191c22;
+  --mat-sys-shadow: #000000;
+  --mat-sys-scrim: #000000;
+  --mat-sys-surface-tint: #005bbe;
+  --mat-sys-inverse-surface: #2d3038;
+  --mat-sys-inverse-on-surface: #eff0fa;
+  --mat-sys-outline: #727785;
+  --mat-sys-outline-variant: #c1c6d5;
+  --mat-sys-border: #edf1f7;
+  --mat-sys-neutral10: #191c22;
+
+  /* Neutral variant */
+  --mat-sys-surface-variant: #dee2f2;
+  --mat-sys-on-surface-variant: #414753;
+  --mat-sys-neutral-variant20: #2b303c;
+
+  /* Typography */
+  --mat-sys-brand-font-family: Roboto;
+  --mat-sys-plain-font-family: Roboto;
+  --mat-sys-bold-font-weight: 700;
+  --mat-sys-medium-font-weight: 500;
+  --mat-sys-regular-font-weight: 400;
+
+  /* Text colors */
+  --mat-text-color: #222b45;
+  --mat-text-offset-color: #ffffff;
+
+  /* Custom surfaces */
+  --mat-sys-surface-container: #efedf0;
+  --mat-sys-corner-extra-large: 8px;
+  --mat-sidenav-container-shape: 0px;
+  --mat-paginator-container-background-color: white;
+  --mdc-icon-button-disabled-icon-color: #9e9e9e;
+  --filled-ripple-color: red;
+  --mat-stepper-container-color: transparent;
+  --mat-sys-corner-extra-small: 6px;
+  --mat-bottom-sheet-container-background-color: #fff;
+
+  /* Tab */
+  --mdc-secondary-navigation-tab-container-height: 40px;
+
+  /* Footer & card */
+  --mat-footer-background-color: #191f3f;
+  --mat-card-background-color: white;
+
+  /* Icon */
+  --mat-icon-color: var(--mat-text-color);
+
+  /* Navigation & Search */
+  --mat-nav-search-background: #ffffffb9; /* --mat-sys-background-dim + '6e' */
+
+  /* Skeleton Loader */
+  --mat-skeleton-loader-background-color: #e0e3eb;
+  --mat-skeleton-loader-action-color: linear-gradient(90deg, #e0e3eb 25%, rgba(255, 255, 255, 0.8) 50%, #e0e3eb 75%);
+}
+
+/* =======================
+   DARK THEME
+   ======================= */
+body.DARK {
+  color-scheme: dark;
+
+  /* Primary palette */
+  --mat-sys-primary: #2196f3;
+  --mat-sys-on-primary: #000000;
+  --mat-sys-primary-container: #232628;
+  --mat-sys-primary-hover: #1e87db;
+  --mat-sys-primary-active: #186eb9;
+  --mat-sys-on-primary-container: #e3f2fd;
+  --mat-sys-inverse-primary: #1565c0;
+  --mat-sys-primary-fixed: #bbdefb;
+  --mat-sys-primary-fixed-dim: #64b5f6;
+  --mat-sys-on-primary-fixed: #1565c0;
+  --mat-sys-on-primary-fixed-variant: #0d47a1;
+
+  /* Transparent version */
+  --mat-sys-primary-transparent: #2196f369;
+
+  /* Subtle palette */
+  --mat-sys-subtle: #4f4f4f;
+  --mat-sys-on-subtle: #ffffff;
+  --mat-sys-subtle-container: #616161;
+  --mat-sys-subtle-hover: #616161;
+  --mat-sys-subtle-active: #474747;
+  --mat-sys-on-subtle-container: #ffffff;
+  --mat-sys-subtle-fixed: #d6d6d6;
+  --mat-sys-subtle-fixed-dim: #808080;
+  --mat-sys-on-subtle-fixed: #000000;
+  --mat-sys-on-subtle-fixed-variant: #606060;
+
+  /* Danger palette */
+  --mat-sys-danger: #ff6258;
+  --mat-sys-on-danger: #000000;
+  --mat-sys-danger-container: #ff3e32;
+  --mat-sys-danger-hover: #ff3e32;
+  --mat-sys-danger-active: #c53026;
+  --mat-sys-on-danger-container: #ffffff;
+  --mat-sys-danger-fixed: #ffd9d6;
+  --mat-sys-danger-fixed-dim: #ff8a82;
+  --mat-sys-on-danger-fixed: #7a1f1a;
+  --mat-sys-on-danger-fixed-variant: #5a1410;
+
+  /* Tertiary palette */
+  --mat-sys-tertiary: #8c909f;
+  --mat-sys-on-tertiary: #8c909f;
+  --mat-sys-tertiary-container: #8c909f;
+  --mat-sys-on-tertiary-container: #f9d8ff;
+  --mat-sys-tertiary-fixed: #dfdfdf;
+  --mat-sys-tertiary-fixed-dim: #dfdfdf;
+  --mat-sys-on-tertiary-fixed: #320046;
+  --mat-sys-on-tertiary-fixed-variant: #6f1d8f;
+
+  /* Neutral palette */
+  --mat-sys-background: #1b2137;
+  --mat-sys-background-dim: #45454e;
+  --mat-sys-on-background: #e1e2ec;
+  --mat-sys-surface: #252c46;
+  --mat-sys-surface-dim: #10131a;
+  --mat-sys-surface-bright: #363941;
+  --mat-sys-surface-container-low: #191c22;
+  --mat-sys-surface-container-lowest: #0b0e15;
+  --mat-sys-surface-container: #252c46;
+  --mat-sys-surface-container-high: #272a31;
+  --mat-sys-surface-container-highest: #32353c;
+  --mat-sys-on-surface: #e1e2ec;
+  --mat-sys-shadow: #000000;
+  --mat-sys-scrim: #000000;
+  --mat-sys-surface-tint: #acc7ff;
+  --mat-sys-inverse-surface: #e1e2ec;
+  --mat-sys-inverse-on-surface: #2d3038;
+  --mat-sys-outline: #8c909f;
+  --mat-sys-outline-variant: #414753;
+  --mat-sys-border: #363636;
+  --mat-sys-neutral10: #191c22;
+  --mat-bottom-sheet-container-background-color: #252c46;
+
+  /* Neutral variant */
+  --mat-sys-surface-variant: #414753;
+  --mat-sys-on-surface-variant: #c1c6d5;
+  --mat-sys-neutral-variant20: #2b303c;
+
+  /* Typography */
+  --mat-text-color: #e0e0e0;
+  --mat-text-offset-color: #e0e0e0;
+
+  /* Custom surfaces */
+  --mat-footer-background-color: #3a3a45;
+  --mat-card-background-color: #252c46;
+
+  /* Icon */
+  --mat-icon-color: #e1e2ec;
+
+  /* Navigation & Search */
+  --mat-nav-search-background: #45454e6e; /* --mat-sys-background-dim + '6e' */
+
+  /* Skeleton Loader */
+  --mat-skeleton-loader-background-color: #414753;
+  --mat-skeleton-loader-action-color: linear-gradient(90deg, #414753 25%, rgba(255, 255, 255, 0.1) 50%, #414753 75%);
+}

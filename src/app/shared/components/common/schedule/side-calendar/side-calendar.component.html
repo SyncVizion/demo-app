@@ -1,0 +1,13 @@
+<div
+  class="form-elements-menu__container"
+  [class]="{ 'form-elements-menu--closed': !expanded(), 'form-elements-menu__container--auto-height': autoHeight() }"
+>
+  <app-calendar
+    floating
+    [animate.enter]="expanded() ? 'expand-animation' : ''"
+    [animate.leave]="!expanded() ? 'collapse-animation' : ''"
+    style="display: flex"
+    [currentDate]="selectedDate()"
+    (dateChange)="onDateChange.emit($event)"
+  ></app-calendar>
+</div>

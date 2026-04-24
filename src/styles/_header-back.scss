@@ -1,0 +1,30 @@
+@use 'variables' as var;
+
+.header-back {
+  line-height: 0;
+
+  &__arrow-icon {
+    font-size: 48px;
+    height: 48px !important;
+    width: 48px !important;
+    color: #222b45;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: var.$header-screen-lg-max) {
+  .header-back__arrow-icon {
+    height: 44px !important;
+    width: 44px !important;
+    font-size: 44px;
+  }
+}
+
+@media screen and (max-width: var.$header-screen-sm-max) {
+  .header-back__arrow-icon {
+    height: 32px !important;
+    width: 32px !important;
+    font-size: 32px;
+  }
+}

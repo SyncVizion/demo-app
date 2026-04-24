@@ -1,0 +1,21 @@
+.dialog-spinner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 24px;
+}
+
+.dialog-content {
+  font-size: 16px !important;
+  padding-top: 12px !important;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 50px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #d1d6df;
+    border-radius: 10px;
+  }
+}

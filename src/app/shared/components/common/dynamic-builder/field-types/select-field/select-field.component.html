@@ -1,0 +1,14 @@
+<mat-form-field class="w-100">
+  <mat-label>{{ element().label }}</mat-label>
+  <mat-select [required]="element().required">
+    @if (element().options) {
+      @for (option of element().options; track option.value) {
+        <mat-option [value]="option.value">{{ option.label }}</mat-option>
+      }
+    } @else {
+      <mat-option value="option1">Option 1</mat-option>
+      <mat-option value="option2">Option 2</mat-option>
+      <mat-option value="option3">Option 3</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

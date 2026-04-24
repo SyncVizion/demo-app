@@ -1,0 +1,186 @@
+@for (slot of timeSlots(); track slot.value) {
+  @for (nestedSlot of [0, 15, 30, 45]; track nestedSlot) {
+    <div
+      cdkDropList
+      [id]="columnId() + ':' + slot.value + ':' + nestedSlot"
+      [cdkDropListData]="jobs()"
+      cdkDropListSortingDisabled
+      cdkDropListOrientation="vertical"
+      (cdkDropListDropped)="onDropEvent($event)"
+      class="schedule-day-jobs__time-slot"
+      [class]="nestedSlot == 15 ? 'schedule-day-jobs__time-slot--dotted-line' : null"
+      [style.border-top]="nestedSlot == 0 && slot.value != 0 ? '1px solid #c4c6d0' : null"
+    >
+      @for (j of jobs(); track j.id) {
+        @if (
+          (j.startTime | dateTimeExtractor: 'hours') === slot.value &&
+          (j.startTime | dateTimeExtractor: 'minutes') === nestedSlot
+        ) {
+          <app-schedule-admin-job-event
+            cdkDrag
+            [cdkDragData]="j"
+            cdkDragPreviewClass="schedule-day-jobs--no-preview"
+            (cdkDragStarted)="whileDragging.set(true)"
+            (cdkDragEnded)="whileDragging.set(false)"
+            [popoverTriggerFor]="popover"
+            [popoverTriggerData]="j"
+            [job]="j"
+            [timeSlots]="timeSlots()"
+            [matTooltip]="j?.name"
+          >
+          </app-schedule-admin-job-event>
+
+          @if (whileDragging()) {
+            <app-schedule-admin-job-event
+              placeholder
+              [job]="j"
+              [timeSlots]="timeSlots()"
+              [isDragging]="whileDragging()"
+            >
+            </app-schedule-admin-job-event>
+          }
+        }
+      }
+    </div>
+  }
+}
+
+<app-popover-panel #popover="appPopoverPanel">
+  <ng-template let-data>
+    <app-popover-panel-header>
+      @if (teamView()) {
+        <button
+          mat-icon-button
+          matTooltip="Remove User From Job"
+          [popoverTriggerFor]="removeUserPopover"
+          [popoverTriggerData]="data"
+        >
+          <mat-icon>person_off</mat-icon>
+        </button>
+      }
+      <button
+        mat-icon-button
+        matTooltip="Delete Job"
+        [popoverTriggerFor]="deleteJobPopover"
+        [popoverTriggerData]="data"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Edit Job" (click)="onJobClick(popover, data)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </app-popover-panel-header>
+
+    <app-popover-panel-content>
+      <div class="d-flex flex-column gap-3">
+        <div class="d-flex gap-3">
+          <mat-icon matTooltip="Details">info</mat-icon>
+
+          <div class="d-flex flex-column gap-1 flex-1">
+            <div class="fs-5">{{ data?.name }}</div>
+            <div class="d-flex flex-row gap-1 fw-light">
+              <div>{{ data?.startTime | date: 'EEEE, MMMM' }}</div>
+              <div>{{ data?.startTime | date: 'h:mm a' }} - {{ data?.endTime | date: 'h:mm a' }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <mat-icon matTooltip="Account">source_environment</mat-icon>
+          <div class="flex-1">{{ data.accountName }}</div>
+        </div>
+
+        <!-- Potentially adding service users list -->
+        <!-- <div class="d-flex align-items-center gap-3">
+          <mat-icon matTooltip="Techs">group</mat-icon>
+          <div class="flex-1">{{ data.accountName }}</div>
+        </div> -->
+
+        <div class="d-flex gap-3 align-items-center">
+          <div
+            matTooltip="Status"
+            class="d-flex justify-content-center align-items-center"
+            [style.width.px]="24"
+            [style.height.px]="24"
+          >
+            <div
+              class="chip-circle"
+              [style.background-color]="data?.status?.color + '3c'"
+              [style.border]="'1px solid ' + data?.status?.color"
+            ></div>
+          </div>
+          <div class="flex-1">{{ data?.status?.name }}</div>
+        </div>
+
+        <div class="d-flex gap-3">
+          <mat-icon matTooltip="Description">notes</mat-icon>
+          <div class="flex-1">{{ data.description }}</div>
+        </div>
+      </div>
+    </app-popover-panel-content>
+  </ng-template>
+</app-popover-panel>
+
+<app-popover-panel #removeUserPopover="appPopoverPanel" position="top" backgroundColor="#fff" width="300px">
+  <ng-template let-data>
+    <app-popover-panel-content>
+      <p class="fs-6">Are you sure you want to remove this user from this job '{{ data?.name }}'?</p>
+      <app-action-bar>
+        <button app-button variant="subtle" emphasis="secondary" (click)="removeUserPopover.close()">Cancel</button>
+        <button
+          app-button
+          variant="brand"
+          emphasis="danger"
+          (click)="removeUserFromJob(data, popover, removeUserPopover)"
+        >
+          Remove
+        </button>
+      </app-action-bar>
+    </app-popover-panel-content>
+  </ng-template>
+</app-popover-panel>
+
+<app-popover-panel
+  #deleteJobPopover="appPopoverPanel"
+  position="top"
+  backgroundColor="#fff"
+  width="300px"
+  (opened)="onJobDeleteClick($event)"
+>
+  <ng-template let-data>
+    <app-popover-panel-content>
+      <p class="fs-6">
+        Are you sure you want to delete this job '{{ data?.name }}'? All content in jobs folder will be archived and
+        will no longer be accessible from the app.
+      </p>
+      <app-action-bar>
+        <button
+          app-button
+          variant="subtle"
+          emphasis="secondary"
+          [disabled]="processDeleteLoading"
+          (click)="deleteJobPopover.close()"
+        >
+          Cancel
+        </button>
+        <button
+          app-button
+          variant="brand"
+          emphasis="danger"
+          [loading]="loadingDeletable || processDeleteLoading"
+          [disabled]="loadingDeletable || !isDeletable"
+          [matTooltip]="
+            loadingDeletable
+              ? 'Checking if job is deletable'
+              : isDeletable
+                ? null
+                : 'Job is not deletable because it has inventory associated with it.'
+          "
+          (click)="processJobDelete(data, popover, deleteJobPopover)"
+        >
+          Delete
+        </button>
+      </app-action-bar>
+    </app-popover-panel-content>
+  </ng-template>
+</app-popover-panel>

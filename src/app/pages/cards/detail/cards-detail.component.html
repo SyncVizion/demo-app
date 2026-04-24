@@ -1,0 +1,126 @@
+<div routerLink="../" class="d-flex align-items-center justify-content-between mb-0 mt-2">
+  <mat-icon>arrow_back_ios</mat-icon>
+</div>
+
+<div class="d-flex gap-2 align-items-center flex-column mb-4 mt-4 justify-content-center">
+  <div class="card-detail__image-container mb-3">
+    @if (image) {
+      <img
+        (click)="onCardClick()"
+        (keydown.enter)="onCardClick()"
+        [src]="image"
+        [alt]="card?.name"
+        [style]="{ 'background-image': 'url(' + image + ')' }"
+        class="card-detail__image"
+      />
+    } @else {
+      <img src="../../../../assets/images/pokemon-back.png" [alt]="card?.name" class="card-detail__image" />
+    }
+  </div>
+
+  <app-card class="w-100">
+    <div class="d-flex justify-content-between align-items-start mb-3">
+      <div class="d-flex flex-column align-items-start">
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="h6 m-0 mb-2">{{ card?.name }}</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <p class="m-0">{{ card?.setName }} • {{ card?.localId }}</p>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column align-items-end">
+        <div class="d-flex align-items-center">
+          <mat-icon
+            [class.card-detail__trend--up]="priceDirection === 'up'"
+            [class.card-detail__trend--down]="priceDirection === 'down'"
+            [class.card-detail__trend--flat]="priceDirection === 'flat'"
+          >
+            {{
+              priceDirection === 'up'
+                ? 'arrow_drop_up'
+                : priceDirection === 'down'
+                  ? 'arrow_drop_down'
+                  : 'check_indeterminate_small'
+            }}
+          </mat-icon>
+          <p class="h6 m-0">{{ currentPrice !== null ? (currentPrice | currency: priceUnit) : 'N/A' }}</p>
+        </div>
+
+        <span>
+          {{ priceChangePercent !== null ? (priceChangePercent | number: '1.0-2') + '%' : 'No trend data' }}
+        </span>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <button app-button variant="brand" emphasis="secondary">
+        <mat-icon>sell</mat-icon>
+        View Sold Listings
+      </button>
+
+      <mat-icon class="card-detail__add-icon">add_circle</mat-icon>
+    </div>
+  </app-card>
+
+  <app-card class="w-100" [padding]="!card.cardmarket">
+    @if (card.cardmarket) {
+      <ngx-charts-area-chart-stacked
+        class="chart-wrapper"
+        [scheme]="colorScheme"
+        [results]="priceChartData"
+        [legend]="true"
+        [legendTitle]="''"
+        [legendPosition]="'below'"
+        [xAxis]="true"
+        [yAxis]="true"
+      >
+      </ngx-charts-area-chart-stacked>
+    } @else {
+      <span class="d-block w-100 text-center">No Data</span>
+    }
+  </app-card>
+
+  <app-card class="w-100">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <p class="h6 m-0">Collections</p>
+
+      @if (collectionsLoading) {
+        <p class="h6 m-0">-</p>
+      } @else {
+        <p class="h6 m-0">
+          {{ currentPrice !== null ? (totalQtyInCollections * currentPrice | currency: priceUnit) : 'N/A' }}
+        </p>
+      }
+    </div>
+
+    @if (collectionsLoading) {
+      <div class="d-flex align-items-center justify-content-center">
+        <mat-spinner></mat-spinner>
+      </div>
+    } @else {
+      <div class="d-flex flex-column gap-4">
+        @for (ucc of userCollectionsCard; track ucc.id) {
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <div class="d-flex flex-column align-items-start gap-2">
+              <p class="m-0">{{ ucc.collectionTitle }}</p>
+              <app-label-tag-chip [tag]="ucc?.condition"></app-label-tag-chip>
+            </div>
+
+            <app-card-qty
+              [(quantity)]="ucc.quantity"
+              (inputQtyClicked)="showQtyUpdateDialog(ucc)"
+              (changeCompleted)="updateCollectionCardQty(ucc, $event)"
+            ></app-card-qty>
+          </div>
+        }
+
+        <button app-button variant="brand" emphasis="primary" (click)="onAddToCollection()">
+          <mat-icon>add_circle</mat-icon>
+          Add to Collection
+        </button>
+      </div>
+    }
+  </app-card>
+</div>
+<div class="mobile-nav__buffer"></div>

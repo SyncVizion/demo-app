@@ -1,0 +1,206 @@
+@use '@angular/material' as mat;
+@use 'variables' as var;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-style: solid;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-text-color);
+  border-radius: 12px;
+  border-width: 1px;
+  border-color: var(--mat-sys-outline-variant);
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 16px;
+
+  &.disabled {
+    opacity: 50%;
+    pointer-events: none;
+  }
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 32px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--mat-text-color);
+    margin: 0;
+  }
+
+  &__border-bottom {
+    border-bottom: 1px solid var(--mat-sys-border) !important;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    &--left {
+      margin-right: 4px;
+    }
+
+    mat-icon {
+      cursor: pointer;
+      font-size: 32px;
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  &__toggle-icon {
+    display: inline-block !important;
+    line-height: 1 !important;
+    font-size: 32px !important;
+    height: 32px !important;
+    width: 32px !important;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &--flip {
+      transform: rotateX(180deg);
+    }
+  }
+
+  &--default {
+    padding: 16px 16px 12px 16px;
+  }
+
+  &--collapsible {
+    padding: 16px 16px 12px 8px;
+    cursor: pointer;
+  }
+
+  &--closed {
+    border: none !important;
+  }
+
+  @include mat.badge-overrides(
+    (
+      background-color: #ff0f0f,
+    )
+  );
+}
+
+.card__content {
+  overflow: hidden;
+  transition: height 225ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  padding: 16px;
+
+  &--closed {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  &--loading {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.card__content--no-padding {
+  .card__content {
+    transition: none;
+    padding: 0;
+  }
+}
+
+.card-hover {
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.04, 1.04);
+    transition: all 0.5s;
+  }
+}
+
+.card-pager-mat-center {
+  @media screen and (max-width: var.$header-screen-sm-max) {
+    .mat-mdc-paginator-container {
+      justify-content: center !important;
+    }
+  }
+}
+
+.virtual-grid-card {
+  &__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  &__menu-icon {
+    cursor: pointer;
+    color: #14b8a6;
+    height: 32px !important;
+    width: 32px !important;
+    font-size: 32px !important;
+  }
+}
+
+.help-center-card {
+  @extend .card-hover;
+  overflow: hidden;
+  min-height: 261px;
+
+  &--title .card__header__content {
+    justify-content: center;
+  }
+
+  app-card-content {
+    text-align: center;
+  }
+}
+
+// Card expand/collapse animations
+.expand-animation {
+  animation: expand 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collapse-animation {
+  animation: collapse 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes expand {
+  from {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  to {
+    max-height: 1000px;
+    opacity: 1;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
+@keyframes collapse {
+  from {
+    max-height: 1000px;
+    opacity: 1;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

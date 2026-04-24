@@ -1,0 +1,54 @@
+<div
+  [ngClass]="{
+    'd-flex flex-column align-items-center justify-content-center': center(),
+  }"
+  class="card-edit-hover"
+>
+  <div class="card-info__container" [ngClass]="{ 'justify-content-center': center() }">
+    @if (header()) {
+      <div class="card-info-title-container">
+        <div class="card-info__label" [ngClass]="{ 'text-center': center() }">
+          {{ header() }}
+        </div>
+        @if (editable()) {
+          <mat-icon
+            #editPopoverOrigin="cdkOverlayOrigin"
+            cdkOverlayOrigin
+            class="card-inline-edit"
+            (click)="edit.emit()"
+            (keydown.enter)="edit.emit()"
+          >
+            edit
+          </mat-icon>
+        }
+      </div>
+    }
+
+    <ng-content select="cardInfoHeader"></ng-content>
+    <ng-content select="mat-icon"></ng-content>
+    @if (tooltip()) {
+      <mat-icon
+        class="pointer"
+        #mtooltip="matTooltip"
+        [matTooltip]="tooltip()"
+        matTooltipPosition="right"
+        (click)="mtooltip.toggle()"
+        (keydown)="mtooltip.toggle()"
+      >
+        info
+      </mat-icon>
+    }
+  </div>
+
+  @if (customContent()) {
+    <ng-container [ngTemplateOutlet]="customContent()"></ng-container>
+  } @else if (link()) {
+    <a class="card-info__label-link" [routerLink]="link()" target="_blank">
+      {{ formattedText() }}
+    </a>
+  } @else {
+    <p [ngClass]="contentColor()" class="card-info__label-text">
+      {{ formattedText() }}
+    </p>
+  }
+</div>

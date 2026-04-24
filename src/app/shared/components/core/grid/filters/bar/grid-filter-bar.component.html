@@ -1,0 +1,22 @@
+<div class="grid-filter-bar">
+  @if (filters()?.length > 0) {
+    <div class="grid-filter-bar__inputs">
+      @for (filter of filters(); track filter) {
+        <div
+          class="grid-filter-bar__item"
+          [ngClass]="{
+            'grid-filter-bar__item--fill': filter.fill(),
+          }"
+          [cdkPortalOutlet]="filter.portal"
+        ></div>
+      }
+    </div>
+  }
+  @if (buttons()?.length > 0) {
+    <div class="grid-filter-bar__buttons">
+      <ng-content select="[app-button]"></ng-content>
+    </div>
+  }
+
+  <ng-content></ng-content>
+</div>

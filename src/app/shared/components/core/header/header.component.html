@@ -1,0 +1,24 @@
+<div class="header__container" [ngClass]="{ 'header--center': center() }">
+  <div
+    class="header__title-content mw-100"
+    [ngClass]="{
+      'header--center': center(),
+      'width-max--full': !buttons() || buttons()?.length <= 0,
+      'mw-100': fullWidth(),
+    }"
+  >
+    <ng-content select="button[mat-icon-button]"></ng-content>
+    <ng-content select="app-header-back"></ng-content>
+    @if (dropMenu()) {
+      <ng-content select="app-header-drop-menu"></ng-content>
+    } @else {
+      <div class="header__text">
+        {{ title() }}
+      </div>
+    }
+  </div>
+
+  <div class="header__buttons">
+    <ng-content select="[app-button]"></ng-content>
+  </div>
+</div>

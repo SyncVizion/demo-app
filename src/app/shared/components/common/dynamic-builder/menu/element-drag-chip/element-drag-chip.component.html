@@ -1,0 +1,23 @@
+<button
+  cdkDrag
+  [cdkDragData]="elementType()"
+  (cdkDragStarted)="whileDragging.set(true)"
+  (cdkDragEnded)="whileDragging.set(false)"
+  class="field-button"
+>
+  <div class="field-button__icon">
+    <mat-icon>{{ elementType().icon }}</mat-icon>
+  </div>
+  <span>{{ elementType().label }}</span>
+
+  <div *cdkDragPlaceholder></div>
+</button>
+
+@if (whileDragging()) {
+  <div class="field-button__placeholder">
+    <div class="field-button__placeholder__icon">
+      <mat-icon>{{ elementType().icon }}</mat-icon>
+    </div>
+    <span>{{ elementType().label }}</span>
+  </div>
+}

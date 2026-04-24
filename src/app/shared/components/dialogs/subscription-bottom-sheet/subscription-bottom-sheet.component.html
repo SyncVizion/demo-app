@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="m-0">Plans</h2>
+  <mat-icon (click)="close()" (keydown.enter)="close()">close</mat-icon>
+</div>
+
+<mat-radio-group
+  class="mb-3"
+  [class]="{ disabled: elementOptions }"
+  #subscriptionOptions
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+>
+  @if (products) {
+    @for (p of products; track p?.id) {
+      <app-card>
+        <div class="d-flex justify-content-between align-items-center">
+          <mat-radio-button
+            class="example-radio-button"
+            [checked]="selectedSubscription?.id === p?.id"
+            [value]="p?.id"
+            (click)="selectedSubscription = p"
+            (keydown.enter)="selectedSubscription = p"
+          >
+            {{ p?.name }}
+          </mat-radio-button>
+          <span>{{ p?.price?.amount | currency }}/{{ p?.price?.interval }}</span>
+        </div>
+      </app-card>
+    }
+  } @else {
+    <app-card>
+      <div class="d-flex gap-3 align-items-center">
+        <div *skeletonLoading="true; size: 24; appearance: 'circle'"></div>
+        <div class="d-flex gap-1 flex-column justify-content-start">
+          <div *skeletonLoading="true; width: 125; height: 12"></div>
+          <div *skeletonLoading="true; width: 100; height: 12"></div>
+        </div>
+      </div>
+    </app-card>
+
+    <app-card>
+      <div class="d-flex gap-3 align-items-center">
+        <div *skeletonLoading="true; size: 24; appearance: 'circle'"></div>
+        <div class="d-flex gap-1 flex-column justify-content-start">
+          <div *skeletonLoading="true; width: 125; height: 12"></div>
+          <div *skeletonLoading="true; width: 100; height: 12"></div>
+        </div>
+      </div>
+    </app-card>
+  }
+</mat-radio-group>
+
+@if (elementOptions) {
+  <div class="d-flex gap-3 flex-column align-items-center">
+    <ngx-stripe-elements class="w-100" [stripe]="stripeClient.stripe" [elementsOptions]="elementOptions">
+      <ngx-stripe-payment [options]="paymentElementOptions" />
+    </ngx-stripe-elements>
+
+    <button class="w-100" app-button variant="brand" emphasis="primary" [loading]="loading" [disabled]="loading">
+      Process Payment
+    </button>
+  </div>
+} @else {
+  <button
+    class="w-100"
+    app-button
+    variant="brand"
+    emphasis="primary"
+    [loading]="loading"
+    [disabled]="loading"
+    (click)="onSubscribe()"
+  >
+    {{
+      'Subscribe for ' + (selectedSubscription?.price?.amount | currency) + '/' + selectedSubscription?.price?.interval
+    }}
+  </button>
+}

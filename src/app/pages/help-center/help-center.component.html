@@ -1,0 +1,71 @@
+<app-header title="Help Center"> </app-header>
+
+<div class="row">
+  <div class="col-md-6 pb-lg">
+    <app-card
+      class="help-center-card"
+      (click)="openFeatureRequestDialog()"
+      (keydown.enter)="openFeatureRequestDialog()"
+    >
+      <app-card-header class="help-center-card--title" title="Feature Request"> </app-card-header>
+      <p>
+        Have an idea to make our software better? We'd love to hear it! Please provide as much detail as possible so our
+        team can fully understand your suggestion. When submitting a feature request, include:
+      </p>
+      <ul>
+        <li style="text-align: initial">Feature Title: A short, descriptive name.</li>
+        <li style="text-align: initial">What it does: A clear explanation of the feature.</li>
+        <li style="text-align: initial">Why it's useful: Explain the problem it solves or the value it adds.</li>
+        <li style="text-align: initial">Who it's for: Describe the type of users who would benefit.</li>
+      </ul>
+    </app-card>
+  </div>
+  <div class="col-md-6 pb-lg">
+    <app-card class="help-center-card" (click)="openBugIssueDialog()" (keydown.enter)="openBugIssueDialog()">
+      <app-card-header class="help-center-card--title" title="Report Bug"></app-card-header>
+      <p>
+        Notice something not working as expected? Help us fix it by reporting the issue. The more details you provide,
+        the faster we can investigate and resolve it. Please include:
+      </p>
+
+      <ul>
+        <li style="text-align: initial">
+          Issue Title: A short summary of the problem. What happened: Describe what you were trying to do and what went
+          wrong.
+        </li>
+        <li style="text-align: initial">
+          Steps to reproduce: List the exact steps to recreate the issue, if possible.
+        </li>
+        <li style="text-align: initial">
+          Expected vs. actual behavior: Tell us what you expected to happen and what actually did.
+        </li>
+        <li style="text-align: initial">Device, browser: Help us pinpoint the issue by sharing your environment.</li>
+      </ul>
+    </app-card>
+  </div>
+  <app-grid [dataObservable]="issueObservable$">
+    <app-grid-column field="type" label="Type">
+      <ng-template let-data>
+        <div [class]="'help-center__type' + ' help-center__type--' + data?.type">{{ data?.type }}</div>
+      </ng-template>
+    </app-grid-column>
+    <app-grid-column field="title" label="Title"></app-grid-column>
+    <app-grid-column field="status" label="Status">
+      <ng-template let-data>
+        {{ data.status === 'Reported Issues' ? 'Pending Investigation' : data.status }}
+      </ng-template>
+    </app-grid-column>
+    <app-grid-column field="createdUser" label="Created By"> </app-grid-column>
+    <app-grid-column field="createdDate" label="Created Date">
+      <ng-template let-data>
+        {{ data.createdDate | date: 'MMM dd, YYYY' : 'EDT' }}
+      </ng-template>
+    </app-grid-column>
+    <app-grid-pager
+      [pageSize]="pageCount"
+      [hidePageSize]="true"
+      (change)="pageChange($event)"
+      key="Issues"
+    ></app-grid-pager>
+  </app-grid>
+</div>

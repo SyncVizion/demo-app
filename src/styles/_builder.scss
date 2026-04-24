@@ -1,0 +1,12 @@
+.form-card {
+  padding-top: 0px !important;
+  app-card-content {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+  }
+
+  &--width-50 {
+    width: 50% !important;
+  }
+}

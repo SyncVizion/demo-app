@@ -1,0 +1,15 @@
+<div
+  class="form-field__container"
+  [class]="editorCanvasService.selectedElement()?.id === element().id ? 'form-field__container--selected' : ''"
+  (click)="editorCanvasService.setSelectedElement(element().id)"
+  (keypress)="editorCanvasService.setSelectedElement(element().id)"
+>
+  <div class="form-field__container__header">
+    <span>{{ element().type | titlecase }}</span>
+    <button mat-icon-button (click)="deleteField($event)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+  <app-element-preview [element]="element()" />
+</div>

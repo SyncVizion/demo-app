@@ -1,0 +1,33 @@
+<div class="app-calendar__container" [class]="{ 'app-calendar--floating': floating() }" *appOverlayLoader="loading">
+  <div class="app-calendar__month-title">
+    <mat-icon class="app-calendar__month-title__icon pointer" (click)="prevMonth()" (keydown.enter)="prevMonth()">
+      keyboard_arrow_left
+    </mat-icon>
+    {{ monthNames[currentMonth] }} {{ currentYear }}
+    <mat-icon class="app-calendar__month-title__icon pointer" (click)="nextMonth()" (keydown.enter)="nextMonth()">
+      keyboard_arrow_right
+    </mat-icon>
+  </div>
+
+  <div class="app-calendar__grid">
+    @for (day of weekDays; track day) {
+      <div class="app-calendar__day-label">
+        {{ day }}
+      </div>
+    }
+    @for (day of calendarDays; track day.date) {
+      <div
+        class="app-calendar__day"
+        [class]="{
+          'app-calendar__day--other': day.isOtherMonth,
+          'app-calendar__day--selected':
+            day.date.getDate() === selectedDate.getDate() && day.date.getMonth() === selectedDate.getMonth(),
+        }"
+        (click)="onDateSelected(day.date)"
+        (keydown.enter)="onDateSelected(day.date)"
+      >
+        {{ day.date.getDate() }}
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<app-header [title]="user?.firstName + ' ' + user?.lastName">
+  <app-header-back (click)="onBackClick()" (keydown.enter)="onBackClick()"></app-header-back>
+
+  @if (!isSameUser && canEditUser) {
+    <button
+      app-button
+      iconOnSmallScreen
+      variant="brand"
+      emphasis="primary"
+      (click)="onResetPassword(true)"
+      (keydown.enter)="onResetPassword(true)"
+    >
+      <mat-icon>lock_reset</mat-icon>
+      Reset User Password
+    </button>
+  }
+  @if (!isSameUser && canDeleteUser) {
+    <button
+      app-button
+      iconOnSmallScreen
+      variant="danger"
+      emphasis="primary"
+      (click)="onDeleteUser()"
+      (keydown.enter)="onDeleteUser()"
+    >
+      <mat-icon>delete</mat-icon>
+      Delete User
+    </button>
+  }
+</app-header>
+
+<app-tab-routing-manager>
+  <app-tab-route label="Details">
+    <div class="row">
+      <div class="col-md-6">
+        <app-card>
+          <app-card-header [title]="'Details'">
+            @if (!isSameUser && canEditUser) {
+              <mat-icon appSuffix (click)="onEditUser()" (keydown.enter)="onEditUser()"> edit_square </mat-icon>
+            }
+          </app-card-header>
+
+          <div class="row">
+            <app-card-info class="col-6" header="Name" [text]="user?.firstName + ' ' + user?.lastName"></app-card-info>
+            <app-card-info class="col-6" header="Email" [text]="user?.email"></app-card-info>
+          </div>
+
+          <div class="row">
+            <app-card-info class="col-6" header="Alias" [text]="user?.alias"></app-card-info>
+            <app-card-info class="col-6" header="Created Date" [text]="user?.createdDate | date"></app-card-info>
+          </div>
+        </app-card>
+
+        @if (user?.firstLogin) {
+          <app-card>
+            <app-card-header [title]="'Security'">
+              <mat-icon
+                appSuffix
+                [cdkCopyToClipboard]="user?.id + (user?.updatedDate | date: 'yyyyMMdd')"
+                (click)="onCopyTempPassword()"
+                (keydown.enter)="onCopyTempPassword()"
+              >
+                content_copy</mat-icon
+              >
+            </app-card-header>
+
+            <div class="row">
+              <app-card-info
+                header="Temporary Password"
+                tooltip="Generated temporary password for users on first login"
+              >
+                <ng-template>
+                  @if (showTempPassword) {
+                    <span>{{ user?.id + (user?.updatedDate | date: 'yyyyMMdd') }}</span>
+                  } @else {
+                    <span class="security-text">************</span>
+                  }
+
+                  <a class="link pl-sm" (click)="toggleShowTempPassword()">{{
+                    showTempPassword ? '(Hide)' : '(Show)'
+                  }}</a>
+                </ng-template>
+              </app-card-info>
+            </div>
+          </app-card>
+        }
+      </div>
+
+      <div class="col-md-6">
+        <app-grid title="Roles" [dataloader]="userRoleDataloader">
+          <app-grid-column field="name" label="Name"></app-grid-column>
+          <app-grid-column field="description" label="Description"></app-grid-column>
+          <app-grid-pager [hidePageSize]="true" pageSize="5" key="Roles"></app-grid-pager>
+        </app-grid>
+      </div>
+    </div>
+  </app-tab-route>
+  <app-tab-route label="Jobs">
+    <div class="row">
+      <app-grid title="Jobs" [dataloader]="userJobsDataloader">
+        <app-grid-filter-bar>
+          <app-grid-filter-search class="w-100" label="Search by Job"></app-grid-filter-search>
+        </app-grid-filter-bar>
+
+        <app-grid-column field="name" label="Job"></app-grid-column>
+        <app-grid-column field="accountName" label="Account"></app-grid-column>
+        <app-grid-column label="Status">
+          <ng-template let-data>
+            <div
+              class="label-tag__type"
+              [style.background-color]="data?.status?.color + '1a'"
+              [style.border]="'1px solid ' + data?.status?.color"
+              [style.color]="data?.status?.color"
+            >
+              {{ data?.status?.name }}
+            </div>
+          </ng-template>
+        </app-grid-column>
+
+        <app-grid-pager [hidePageSize]="true" pageSize="5" key="Jobs"></app-grid-pager>
+      </app-grid>
+    </div>
+  </app-tab-route>
+</app-tab-routing-manager>

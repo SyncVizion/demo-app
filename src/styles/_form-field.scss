@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+@include mat.form-field-overrides(
+  (
+    outlined-container-shape: 12px,
+  )
+);
+
+mat-form-field {
+  @include mat.form-field-density(-1);
+}
+
+mat-paginator mat-form-field {
+  @include mat.form-field-density(-4);
+}

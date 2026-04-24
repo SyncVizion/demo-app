@@ -1,0 +1,26 @@
+<div class="mobile-nav__container">
+  <div class="mobile-nav__items">
+    <div class="mobile-nav__active-indicator" [style.transform]="'translateX(' + activeIndex * 100 + '%)'"></div>
+
+    <a routerLink="/home" routerLinkActive="active" class="mobile-nav__items__item">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </a>
+    <a routerLink="/sets" routerLinkActive="active" class="mobile-nav__items__item">
+      <mat-icon>cards_stack</mat-icon>
+      <span>Sets</span>
+    </a>
+    <a routerLink="/cards" routerLinkActive="active" class="mobile-nav__items__item">
+      <mat-icon>style</mat-icon>
+      <span>Cards</span>
+    </a>
+    <a routerLink="/portfolio" routerLinkActive="active" class="mobile-nav__items__item">
+      <mat-icon>stacks</mat-icon>
+      <span>Portfolio</span>
+    </a>
+    <a routerLink="/profile" routerLinkActive="active" class="mobile-nav__items__item">
+      <mat-icon>account_circle</mat-icon>
+      <span>Profile</span>
+    </a>
+  </div>
+</div>

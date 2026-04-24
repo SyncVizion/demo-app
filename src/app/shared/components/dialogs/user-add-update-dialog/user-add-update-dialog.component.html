@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>{{ data?.title ? data.title : 'Add User' }}</h1>
+@if (loading) {
+  <div class="dialog-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+} @else {
+  <div mat-dialog-content class="dialog-content">
+    @if (userForm) {
+      <form [formGroup]="userForm" class="form">
+        <div class="row">
+          <div class="col-12 mb-3">
+            <app-form-field-input label="First Name" formControlName="firstName"> </app-form-field-input>
+          </div>
+
+          <div class="col-12 mb-3">
+            <app-form-field-input label="Last Name" formControlName="lastName"> </app-form-field-input>
+          </div>
+
+          <div class="col-12">
+            <app-form-field-input class="disabled" label="Email" formControlName="email"> </app-form-field-input>
+          </div>
+        </div>
+      </form>
+    }
+  </div>
+  <div class="action-bar action-bar--dialog">
+    @if (allowCancel) {
+      <button app-button variant="subtle" emphasis="secondary" (click)="close()">Cancel</button>
+    }
+
+    <button
+      app-button
+      variant="brand"
+      emphasis="primary"
+      [disabled]="userForm?.invalid || userForm?.pending || userForm?.pristine"
+      (click)="save()"
+    >
+      {{ data?.saveButtonText ? data.saveButtonText : 'Save' }}
+    </button>
+  </div>
+}

@@ -1,0 +1,32 @@
+<div class="form-elements-menu__container">
+  <h3 class="form-elements-menu__title" [style]="tabs() ? 'display: flex; justify-content: center;' : ''">
+    {{ title() ? title() : 'Menu' }}
+  </h3>
+  <div
+    cdkDropList
+    cdkDropListSortingDisabled
+    cdkDropListData="menu-selector"
+    [cdkDropListEnterPredicate]="noDropAllowed"
+    class="form-elements-menu__options"
+  >
+    @if (tabs()) {
+      <app-tab-routing-manager class="app-tab-label-small-font">
+        @for (tab of tabGroups; track tab) {
+          <app-tab-route [label]="tab.name">
+            @for (type of tab.elementTypes; track type.type) {
+              @if (!type.disabled) {
+                <app-element-drag-chip [elementType]="type" />
+              }
+            }
+          </app-tab-route>
+        }
+      </app-tab-routing-manager>
+    } @else {
+      @for (type of elementTypes; track type.type) {
+        @if (!type.disabled) {
+          <app-element-drag-chip [elementType]="type" />
+        }
+      }
+    }
+  </div>
+</div>

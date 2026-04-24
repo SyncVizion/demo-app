@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+@if (loading) {
+  <div class="dialog-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+} @else {
+  <div mat-dialog-content class="dialog-content">
+    @if (data?.message) {
+      <div>{{ data.message }}</div>
+    }
+  </div>
+
+  <app-action-bar class="action-bar--dialog">
+    @if (data?.actionLeft) {
+      <button
+        app-button
+        (click)="onActionLeftClick()"
+        [variant]="data?.actionLeft?.variant"
+        [emphasis]="data?.actionLeft?.emphasis"
+      >
+        @if (data?.actionLeft?.icon) {
+          <mat-icon>{{ data?.actionLeft?.icon }}</mat-icon>
+        }
+        {{ data.actionLeft.text }}
+      </button>
+    }
+
+    @if (data?.actionRight) {
+      <button
+        app-button
+        (click)="onActionRightClick()"
+        [variant]="data?.actionRight?.variant"
+        [emphasis]="data?.actionRight?.emphasis"
+      >
+        @if (data?.actionRight?.icon) {
+          <mat-icon>{{ data?.actionRight?.icon }}</mat-icon>
+        }
+        {{ data.actionRight.text }}
+      </button>
+    }
+  </app-action-bar>
+}

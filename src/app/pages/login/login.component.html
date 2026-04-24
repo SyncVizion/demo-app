@@ -1,0 +1,15 @@
+<div class="login-card">
+  @if (loading) {
+    <mat-progress-bar class="login-loader" mode="indeterminate"></mat-progress-bar>
+  } @else {
+    <div class="login-loader--placeholder"></div>
+  }
+
+  <div class="login-card__content">
+    <div class="login-card__header">
+      <img [alt]="'Company Logo'" [src]="logoUrl" />
+    </div>
+
+    <ng-content></ng-content>
+  </div>
+</div>

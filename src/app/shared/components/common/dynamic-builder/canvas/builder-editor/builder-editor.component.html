@@ -1,0 +1,45 @@
+<div class="form-editor__container">
+  @for (row of editorCanvasService.rows(); track row.id) {
+    <div
+      cdkDropList
+      class="form-editor__elements-container"
+      [cdkDropListEnterPredicate]="dropCondition() ? dropCondition() : defaultDropCondition"
+      [cdkDropListData]="row.id"
+      (cdkDropListDropped)="onDropInRow($event, row.id)"
+      [cdkDropListOrientation]="'mixed'"
+      [style.view-transition-name]="'row-' + row.id"
+    >
+      <div class="form-editor__elements-container__row-header">
+        <h2>Row</h2>
+        <button mat-icon-button (click)="editorCanvasService.deleteRow(row.id)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <div class="form-editor__elements-container__content">
+        @for (element of row.elements; track element.id) {
+          <app-element-field
+            cdkDrag
+            [cdkDragData]="element"
+            class="flex-1"
+            [element]="element"
+            [style.view-transition-name]="'element-' + element.id"
+            [style.view-transition-class]="'element-transition'"
+          />
+        } @empty {
+          <div class="form-editor__elements-container__no-elements">Drag and drop form elements here</div>
+        }
+      </div>
+
+      <div class="form-editor__elements-container__row-navigation">
+        <button mat-icon-button [disabled]="$first" (click)="editorCanvasService.moveRowUp(row.id)">
+          <mat-icon>keyboard_arrow_up</mat-icon>
+        </button>
+
+        <button mat-icon-button [disabled]="$last" (click)="editorCanvasService.moveRowDown(row.id)">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+    </div>
+  }
+</div>

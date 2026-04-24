@@ -1,0 +1,87 @@
+@use 'variables' as var;
+@use '@angular/material' as mat;
+
+.app-snackbar__container {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.app-snackbar {
+  border-radius: 100px;
+  overflow: hidden;
+  background-color: var(--mat-sys-background);
+  margin: 85px auto !important;
+  max-width: fit-content;
+
+  .mdc-snackbar__label {
+    padding: 8px !important;
+  }
+
+  @include mat.snack-bar-overrides(
+    (
+      button-color: #505f79,
+      supporting-text-color: var(--mat-text-color),
+    )
+  );
+
+  &--default {
+    mat-icon {
+      color: #505f79;
+    }
+
+    border: 2px solid #505f79;
+    @include mat.snack-bar-overrides(
+      (
+        container-color: #505f7929,
+      )
+    );
+  }
+
+  &--success {
+    mat-icon {
+      color: #4bb543;
+    }
+
+    border: 2px solid #4bb543;
+    @include mat.snack-bar-overrides(
+      (
+        container-color: #4bb54329,
+      )
+    );
+  }
+
+  &--warning {
+    mat-icon {
+      color: #ffab00;
+    }
+
+    border: 2px solid #ffab00;
+    @include mat.snack-bar-overrides(
+      (
+        container-color: #ffab0029,
+      )
+    );
+  }
+
+  &--danger {
+    mat-icon {
+      color: #f70000;
+    }
+
+    border: 2px solid #f70000;
+    @include mat.snack-bar-overrides(
+      (
+        container-color: #f7000029,
+      )
+    );
+  }
+}
+
+@media screen and (max-width: var.$screen-sm-max) {
+  .app-snackbar__container {
+    width: 100%;
+  }
+}

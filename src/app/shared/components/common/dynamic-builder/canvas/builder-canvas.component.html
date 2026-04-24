@@ -1,0 +1,25 @@
+<div class="form-canvas__container">
+  <div class="form-canvas__header">
+    <h3 class="form-canvas__header__title">{{ title() ? title() : 'Canvas' }}</h3>
+    @if (!hidePreview()) {
+      <mat-button-toggle-group [(value)]="activeTab" hideSingleSelectionIndicator>
+        <mat-button-toggle value="editor">Editor</mat-button-toggle>
+        <mat-button-toggle value="preview">Preview</mat-button-toggle>
+      </mat-button-toggle-group>
+    }
+
+    @if (activeTab() === 'editor') {
+      <div class="flex-1"></div>
+      <button app-button variant="brand" emphasis="primary" (click)="editorCanvasService.addRow()">
+        <mat-icon>add_circle</mat-icon>
+        Add Row
+      </button>
+    }
+  </div>
+
+  @if (activeTab() === 'editor') {
+    <app-builder-editor [dropCondition]="dropCondition()" [newElementBuilder]="newElementBuilder()" />
+  } @else {
+    <app-builder-preview />
+  }
+</div>

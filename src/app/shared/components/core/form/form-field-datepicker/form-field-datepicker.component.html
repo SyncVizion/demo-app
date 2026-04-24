@@ -1,0 +1,22 @@
+<mat-form-field
+  floatLabel="always"
+  appearance="outline"
+  [class]="{ 'w-100': true, 'pb-sm': bottomGap() }"
+  [subscriptSizing]="subscriptSizing()"
+>
+  <mat-label class="text-xl"> {{ label() }}</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [name]="name()"
+    [placeholder]="placeholder()"
+    [inputMode]="inputmode()"
+    [formControlName]="formControlName()"
+    [readonly]="readonly()"
+  />
+  <mat-hint>{{ hint() }}</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker (closed)="closed.emit()"></mat-datepicker>
+
+  <mat-error>{{ errorMessage() }}</mat-error>
+</mat-form-field>

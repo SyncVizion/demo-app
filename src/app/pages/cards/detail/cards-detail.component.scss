@@ -1,0 +1,68 @@
+@use '../../../../styles/variables' as var;
+
+.card-detail {
+  &__price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__price-label {
+    color: var(--mat-text-color);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  &__price-value {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  &__trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: #f3f4f6;
+    color: var(--mat-text-color);
+
+    .mat-icon {
+      color: var(--mat-sys-background);
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+
+    &--up {
+      color: #22c55e;
+    }
+
+    &--down {
+      color: #ef4444;
+    }
+
+    &--flat {
+      color: #4b5563;
+    }
+  }
+
+  &__add-icon {
+    color: #14b8a6;
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    max-width: 200px;
+  }
+}

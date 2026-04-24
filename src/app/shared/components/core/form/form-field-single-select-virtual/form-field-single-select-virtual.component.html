@@ -1,0 +1,104 @@
+<mat-form-field
+  floatLabel="always"
+  appearance="outline"
+  class="w-100"
+  [class]="{ 'pb-sm': bottomGap() }"
+  [subscriptSizing]="subscriptSizing()"
+  >
+  @if (label()) {
+    <mat-label class="text-xl"> {{ label() }}</mat-label>
+  }
+
+  <mat-select
+    [formControlName]="formControlName()"
+    [(value)]="value"
+    [placeholder]="placeholder() ? placeholder() : 'Select ' + label()"
+    [multiple]="multiple()"
+    [compareWith]="compareFn()"
+    (openedChange)="onPanelToggle($event)"
+    (selectionChange)="onValueChange($event)"
+    >
+    @if (!multiple()) {
+      <mat-select-trigger>
+        @if (value?.color) {
+          <div class="single-select__trigger">
+            <div
+              class="single-select__trigger__color"
+              [style.background-color]="value?.color + '3c'"
+              [style.border]="'1px solid ' + value?.color"
+            ></div>
+            <span>{{ displayField() ? value?.virtualDisplay : value }}</span>
+          </div>
+        } @else if (value) {
+          <span>{{ displayField() ? value?.virtualDisplay : value }}</span>
+        }
+      </mat-select-trigger>
+    } @else {
+      <mat-select-trigger>
+        <div class="d-flex gap-3">
+          @for (item of value; track item; let last = $last) {
+            @if (item?.color) {
+              <div class="single-select__trigger">
+                <div
+                  class="single-select__trigger__color"
+                  [style.background-color]="item?.color + '3c'"
+                  [style.border]="'1px solid ' + item?.color"
+                ></div>
+                <span>{{ displayField() ? item?.virtualDisplay : item }}</span>
+              </div>
+            } @else {
+              <span>{{ displayField() ? item?.virtualDisplay : item }}</span>
+              @if (!last) {
+                <span>, </span>
+              }
+            }
+          }
+        </div>
+      </mat-select-trigger>
+    }
+
+    @if (virtualDatasource()) {
+      <cdk-virtual-scroll-viewport
+        itemSize="48"
+        [minBufferPx]="minBufferPx()"
+        [maxBufferPx]="maxBufferPx()"
+        appendOnly="true"
+        [style.height.px]="virtualDatasource().noResults ? 48 : 200"
+        >
+        <mat-option *cdkVirtualFor="let item of virtualDatasource()" [value]="item">
+          @if (item) {
+            @if (item?.color) {
+              <div class="d-flex justify-content-center align-items-center gap-2">
+                <div
+                  class="single-select__trigger__color"
+                  [style.background-color]="item?.color + '3c'"
+                  [style.border]="'1px solid ' + item?.color"
+                ></div>
+                {{ item.name }}
+              </div>
+            } @else {
+              {{ item?.virtualDisplay || item }}
+            }
+          } @else {
+            <div class="d-flex align-items-center gap-2">
+              <mat-spinner matSuffix class="mr-sm" [strokeWidth]="2" [diameter]="20"></mat-spinner>
+              <span>Loading</span>
+            </div>
+          }
+        </mat-option>
+
+        @if (virtualDatasource().noResults) {
+          <mat-option class="text-center" [disabled]="true">
+            <span>No results found</span>
+          </mat-option>
+        }
+      </cdk-virtual-scroll-viewport>
+    }
+  </mat-select>
+
+  @if (loading() || control?.pending) {
+    <mat-spinner matSuffix class="mr-sm" [strokeWidth]="2" [diameter]="20"></mat-spinner>
+  }
+
+  <mat-error>{{ errorMessage() }}</mat-error>
+</mat-form-field>

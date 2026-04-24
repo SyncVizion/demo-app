@@ -1,0 +1,51 @@
+@use 'sass:math';
+
+.grid-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 16px 24px 16px;
+}
+
+.grid-filter__search-icon {
+  display: inline-block !important;
+  line-height: 1 !important;
+  font-size: 32px !important;
+  height: 32px !important;
+  width: 32px !important;
+}
+
+.grid-filter-bar__inputs {
+  gap: 16px;
+  display: flex;
+  flex: 1;
+  flex-flow: row wrap;
+  overflow: visible;
+  width: 70%;
+}
+
+.grid-filter-bar__buttons {
+  align-items: flex-start;
+  display: flex;
+  gap: 8px;
+}
+
+.grid-filter-bar__item {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .grid-filter-bar__item {
+    flex: 0 0 auto;
+    width: 25%;
+  }
+}
+
+.grid-filter-bar__item--fill {
+  flex-grow: 1;
+}
+
+.grid-filter-search__min-height {
+  min-height: 53px !important;
+}

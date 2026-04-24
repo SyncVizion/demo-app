@@ -1,0 +1,14 @@
+<div class="search-bar">
+  <mat-icon class="search-bar__icon">search</mat-icon>
+  <input matInput [formControl]="searchControl" type="text" [placeholder]="placeholder()" />
+
+  @if (searchControl?.value) {
+    <mat-icon class="search-bar__close-icon" (click)="clear()" (keydown.enter)="clear()">close</mat-icon>
+  }
+</div>
+
+@if (showFilter()) {
+  <button app-button-icon variant="subtle" emphasis="secondary" filled>
+    <mat-icon class="text-color">filter_list</mat-icon>
+  </button>
+}

@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Submit Bug/Issue</h1>
+@if (loading) {
+  <div class="dialog-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+} @else {
+  <div mat-dialog-content style="padding-top: 4px">
+    @if (form) {
+      <form [formGroup]="form" class="form">
+        <app-form-field-input label="Title" formControlName="title"></app-form-field-input>
+        <app-form-field-textarea label="Steps to Reproduce" formControlName="repoSteps"></app-form-field-textarea>
+        <app-form-field-textarea label="Expected vs actual behavior" formControlName="result"></app-form-field-textarea>
+        <app-form-field-textarea
+          label="Device/Broswer Environment"
+          formControlName="environment"
+        ></app-form-field-textarea>
+      </form>
+    }
+  </div>
+  <div class="action-bar action-bar--dialog">
+    <button app-button variant="brand" emphasis="secondary" (click)="close()">Cancel</button>
+    <button
+      app-button
+      variant="brand"
+      emphasis="primary"
+      [disabled]="form?.invalid || form?.pending || form?.pristine"
+      (click)="submit()"
+    >
+      Submit
+    </button>
+  </div>
+}

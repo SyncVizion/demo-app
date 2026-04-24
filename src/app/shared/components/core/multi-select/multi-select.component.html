@@ -1,0 +1,29 @@
+<div class="multi-select-container__inner" [class.multi-select-container__inner--scrollable]="scrollable()">
+  <div [class]="scrollable() ? 'chip-container__scroll' : 'chip-container'">
+    @for (tag of value; track tag; let index = $index) {
+      <app-chip
+        class="min-w-fit-content"
+        removeable
+        [index]="index"
+        [selected]="selectedTag === index"
+        (removed)="onTagRemoved($event)"
+        >{{ tag }}
+      </app-chip>
+    }
+  </div>
+  <form [formGroup]="multiselectForm" class="multi-select-form">
+    <input
+      class="multi-select-field"
+      [class.multi-select-field--scrollable]="scrollable()"
+      type="text"
+      #multiselectElement
+      formControlName="multiselectField"
+      [placeholder]="value?.length > 0 ? '' : placeholder()"
+      (paste)="onInputPaste($event)"
+      (keydown)="onKeydown($event)"
+      (blur)="onInputBlurred($event)"
+      (focus)="onInputFocused($event)"
+    />
+  </form>
+</div>
+<ng-content select="[appSuffix]"> </ng-content>

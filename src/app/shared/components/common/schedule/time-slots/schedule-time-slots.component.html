@@ -1,0 +1,7 @@
+@for (slot of timeSlots(); track slot.value) {
+  <div class="schedule-time-slots__item">
+    @if (slot.value != 0) {
+      {{ slot.display }}
+    }
+  </div>
+}

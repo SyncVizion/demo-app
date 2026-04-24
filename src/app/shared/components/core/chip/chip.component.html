@@ -1,0 +1,11 @@
+<ng-content select="mat-icon:not([appSuffix])"> </ng-content>
+
+<div class="chip__text">
+  <ng-content></ng-content>
+</div>
+
+<ng-content select="mat-icon[appSuffix]"> </ng-content>
+
+@if (removeable()) {
+  <mat-icon class="chip__icon" (click)="removeTag()" (keydown)="removeTag()">close</mat-icon>
+}

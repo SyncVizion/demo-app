@@ -1,0 +1,14 @@
+.label-tag {
+  &__type {
+    padding: 0px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+    width: fit-content !important;
+  }
+
+  &__default {
+    background-color: #607d8b1a;
+    border: 1px solid #607d8b;
+    color: #2a2a2a;
+  }
+}

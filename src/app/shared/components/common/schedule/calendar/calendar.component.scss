@@ -1,0 +1,83 @@
+.app-calendar {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+      0 0 #0000,
+      0 0 #0000,
+      0 0 #0000,
+      0 0 #0000,
+      0 1px 3px 0 rgb(0 0 0 / 0.1),
+      0 1px 2px -1px rgb(0 0 0 / 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+  }
+
+  &__month-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    color: #2a2a2a;
+    background-color: #f1f5f9;
+    border-radius: 8px;
+
+    &__icon {
+      background-color: white;
+      border-radius: 50%;
+    }
+  }
+
+  &__day-label {
+    font-weight: bold;
+    text-align: center;
+    color: #797979;
+    width: 32px;
+  }
+
+  &__grid {
+    display: grid;
+    justify-content: space-between;
+    align-content: space-between;
+    justify-items: center;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  &__days {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__day {
+    cursor: pointer;
+    text-align: center;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    line-height: 23px;
+    font-weight: 500;
+
+    &--selected {
+      background-color: #4789f9;
+      color: #fff;
+    }
+
+    &--other {
+      opacity: 20%;
+    }
+  }
+
+  &--floating {
+    box-shadow: none;
+    background-color: transparent;
+  }
+}

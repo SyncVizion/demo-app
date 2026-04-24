@@ -1,0 +1,124 @@
+<div class="d-flex align-items-center justify-content-between mb-4 mt-2">
+  <span class="h2 m-none">Portfolio</span>
+  <button mat-icon-button variant="brand" emphasis="primary" (click)="openCreateCollectiontDialog()">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+</div>
+
+<cdk-virtual-scroll-viewport class="vh-100" itemSize="215" appendOnly="true" minBufferPx="300" maxBufferPx="500">
+  <div class="row">
+    <div *cdkVirtualFor="let element of virtualDatasource">
+      @if (element?.id) {
+        <app-card
+          class="grid-card"
+          style="min-height: 200px"
+          (click)="onCardClick(element)"
+          (keydown.enter)="onCardClick(element)"
+        >
+          <app-card-header
+            [title]="element?.title"
+            (click)="$event.stopPropagation()"
+            (keydown)="$event.stopPropagation()"
+          >
+            <mat-icon
+              class="virtual-grid-card__menu-icon"
+              appSuffix
+              [matMenuTriggerFor]="menu"
+              [matMenuTriggerData]="{ collection: element }"
+            >
+              more_horiz
+            </mat-icon>
+          </app-card-header>
+          <div class="row">
+            <div class="col-6">
+              <div class="card-image-container">
+                <div class="card-grid">
+                  @for (card of element?.cards; track card) {
+                    @if (card?.cardSource?.image) {
+                      @if (card?.cardSource?.image.endsWith('.png') || card?.cardSource?.image.endsWith('.jpg')) {
+                        <img
+                          [src]="card?.cardSource?.image"
+                          alt="{{ card?.cardSource?.name }}"
+                          class="card-image-preview"
+                        />
+                      } @else {
+                        <img
+                          [src]="card?.cardSource?.image + '/high.webp'"
+                          alt="{{ card?.cardSource?.name }}"
+                          class="card-image-preview"
+                        />
+                      }
+                    }
+                  }
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <app-card-info header="Public" [text]="element?.publicCollection ? 'Yes' : 'No'"></app-card-info>
+              <app-card-info header="Count" [text]="element?.cardCount"></app-card-info>
+            </div>
+          </div>
+        </app-card>
+      }
+    </div>
+    @if (virtualDatasource?.loading()) {
+      <ng-container [ngTemplateOutlet]="gridLoadingTemplate"></ng-container>
+    }
+
+    @if (virtualDatasource?.noResults()) {
+      <div class="col-12">
+        <p class="text-center mt-5">No results found</p>
+      </div>
+    }
+  </div>
+  <div class="card-container-buffer"></div>
+</cdk-virtual-scroll-viewport>
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-collection="collection">
+    <button mat-menu-item (click)="openEditCollectionDialog(collection)">
+      <mat-icon>edit_square</mat-icon>
+      <span>{{ 'Edit' }}</span>
+    </button>
+    <button mat-menu-item [popoverTriggerFor]="deletePopover" [popoverTriggerData]="collection">
+      <mat-icon>remove_selection</mat-icon>
+      <span>{{ 'Delete' }}</span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<app-popover-panel #deletePopover="appPopoverPanel" position="center" backgroundColor="#252c46" width="300px">
+  <ng-template let-data>
+    <app-popover-panel-content>
+      <p class="fs-6">Are you sure you want to delete '{{ data?.title }}'?</p>
+      <app-action-bar>
+        <button app-button variant="subtle" emphasis="secondary" (click)="deletePopover.close()">Cancel</button>
+        <button app-button variant="brand" emphasis="danger" (click)="deleteCollection(data, deletePopover)">
+          Delete
+        </button>
+      </app-action-bar>
+    </app-popover-panel-content>
+  </ng-template>
+</app-popover-panel>
+
+<ng-template #gridLoadingTemplate>
+  @for (l of [1, 2, 3, 4]; track l) {
+    <div>
+      <app-card class="horizontal-card">
+        <app-card-header class="virtual-card__loader__card-header">
+          <div *skeletonLoading="true; width: 125; height: 12"></div>
+          <div appSufix *skeletonLoading="true; width: 32; height: 12"></div>
+        </app-card-header>
+        <div class="row">
+          <div class="col-6">
+            <div *skeletonLoading="true; height: 240; width: '100%'"></div>
+          </div>
+          <div class="col-6">
+            <div *skeletonLoading="true; width: '51%'; height: 12"></div>
+            <div *skeletonLoading="true; width: '51%'; height: 12"></div>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  }
+</ng-template>

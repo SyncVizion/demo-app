@@ -1,0 +1,20 @@
+<div class="loading-layout-container">
+  <div class="loading-layout-container__card">
+    @if (showError()) {
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <mat-icon class="unknown-error">sentiment_dissatisfied</mat-icon>
+        <div class="unknown-error--text">An unexpected error occured.</div>
+      </div>
+    } @else {
+      <div class="loading-layout-container__logo">
+        <img [src]="logoUrl" alt="Company Logo" />
+      </div>
+      <div class="ellipsis-loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    }
+  </div>
+</div>

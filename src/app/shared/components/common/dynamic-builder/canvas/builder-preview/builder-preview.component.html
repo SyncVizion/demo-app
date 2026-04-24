@@ -1,0 +1,11 @@
+<div class="form-preview__container">
+  <div class="form-preview__container__fields">
+    @for (row of editorCanvasService.rows(); track row.id) {
+      <div class="form-preview__container__field-item">
+        @for (element of row.elements; track element.id) {
+          <app-element-preview class="flex-1" [element]="element" />
+        }
+      </div>
+    }
+  </div>
+</div>

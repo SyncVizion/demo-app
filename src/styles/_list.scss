@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+.app-list--break-word {
+  height: initial !important;
+
+  span[matListItemLine] {
+    word-wrap: break-word !important;
+    white-space: pre-wrap !important;
+  }
+}
+
+.app-selection-list {
+  padding: 0 !important;
+  @include mat.list-overrides(
+    (
+      list-item-disabled-label-text-opacity: 1,
+      list-item-disabled-state-layer-opacity: 0,
+    )
+  );
+}

@@ -1,0 +1,179 @@
+// White
+$white: #fff;
+
+// Black
+$black: #000;
+
+// Link Color
+$link: #0068d6;
+$link-hover: #3e88d8;
+
+// Gray Scale
+$gray-000: #cfd8dc;
+$gray-100: #b0bec5;
+$gray-200: #90a4ae;
+$gray-300: #78909c;
+$gray-400: #666;
+$gray-500: #515151;
+$gray-600: #444;
+$gray-700: #2a2a2a;
+
+// Blue Scale
+$blue-000: #bbdefb;
+$blue-100: #85c4f8;
+$blue-200: #5bb0f7;
+$blue-300: #0095ff;
+$blue-400: #1d77bd;
+$blue-500: #2b67b2;
+$blue-600: #3155a6;
+$blue-700: #263c97;
+
+// Teal Scale
+$teal-000: #b2ebf2;
+$teal-100: #80deea;
+$teal-200: #4dd0e1;
+$teal-300: #26c6da;
+$teal-400: #22aec0;
+$teal-500: #1d93a3;
+$teal-600: #1a818f;
+$teal-700: #166d79;
+
+// Green Scale
+$green-000: #c8e6c9;
+$green-100: #a5d6a7;
+$green-200: #81c784;
+$green-300: #66bb6a;
+$green-400: #3cbe36;
+$green-500: #2b9936;
+$green-600: #058430;
+$green-700: #056c30;
+
+// Orange Scale
+$orange-000: #ffe0b2;
+$orange-100: #ffcc80;
+$orange-200: #feb759;
+$orange-300: #ffa726;
+$orange-400: #fea83a;
+$orange-500: #fd9827;
+$orange-600: #f88e25;
+$orange-700: #eb6f20;
+
+// Red Scale
+$red-000: #ffccbc;
+$red-100: #ffab91;
+$red-200: #ff7c65;
+$red-300: #ff4943;
+$red-400: #e32323;
+$red-500: #cd1816;
+$red-600: #b50e19;
+$red-700: #950e0c;
+
+// Base
+$primary: $blue-300;
+$text-color: $gray-700;
+
+//**************************************************//
+// Fonts
+//**************************************************//
+$font-weight-semi-light: 300;
+$font-weight-normal: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+
+$font-size-sm: 12px !default;
+$font-size-caption: 14px !default;
+$font-size-md: 16px !default;
+$font-size-base: 18px !default;
+$font-size-lg: 20px !default;
+$font-size-xl: 24px !default;
+$font-size-header-xs: 32px !default;
+$font-size-header-sm: 36px !default;
+$font-size-header-md: 36px !default;
+$font-size-header-lg: 36px !default;
+
+//**************************************************//
+// Content & Layout
+//**************************************************//
+
+$spacing-xs: 16px !default;
+$spacing-sm: 18px !default;
+$spacing-md: 24px !default;
+$spacing-lg: 24px !default;
+$spacing-xl: 30px !default;
+
+$padding: $spacing-xs !default;
+$padding-xs: $spacing-xs !default;
+$padding-sm: $spacing-sm !default;
+$padding-md: $spacing-md !default;
+$padding-lg: $spacing-lg !default;
+$padding-base-vertical: 6px !default;
+
+$margin: $spacing-xs !default;
+$margin-xs: $spacing-xs !default;
+$margin-sm: $spacing-sm !default;
+$margin-md: $spacing-md !default;
+$margin-lg: $spacing-lg !default;
+$margin-xl: $margin * 2 !default;
+
+$line-height-sm: 20px !default;
+$line-height-md: 24px !default;
+$line-height-lg: 32px !default;
+$line-height-lg: 44px !default;
+
+//**************************************************//
+// Screen Widths
+//**************************************************//
+
+// Base Sizes
+$screen-xs-max: 375px !default; // Small Mobile Devices (0 - 375)
+$screen-sm-max: 500px !default; // Large Mobile Devices (376 - 500)
+$screen-md-max: 768px !default; // iPad, Tablet (501 - 768)
+$screen-lg-max: 1024px !default; // Small Screens, Laptops (769 - 1024)
+$screen-xl-max: 1274px !default; // Large Screens, TV's (1025 - 1274)
+
+// Button
+$button-screen-sm-max: $screen-sm-max;
+$button-screen-md-max: 830px;
+$button-screen-lg-max: $screen-lg-max;
+
+// Card
+$card-screen-sm-max: $screen-sm-max;
+
+// Footer
+$footer-screen-xs-max: 425px;
+$footer-screen-sm-max: 520px;
+$footer-screen-md-max: $screen-md-max;
+$footer-screen-lg-max: $screen-lg-max;
+
+// Grid
+$grid-screen-sm-max: 570px;
+$grid-screen-md-max: $screen-md-max;
+
+// Header
+$header-screen-sm-max: $screen-sm-max;
+$header-screen-lg-max: $screen-lg-max;
+
+// Layout
+$layout-screen-lg-max: 960px;
+
+// Login
+$login-screen-sm-max: $screen-sm-max;
+$login-screen-md-max: $screen-md-max;
+$login-screen-lg-max: $screen-xl-max;
+
+// Page
+$page-screen-sm-max: $screen-sm-max;
+$page-screen-md-max: 600px;
+$page-screen-lg-max: $screen-lg-max;
+$page-screen-xl-max: 1800px;
+
+//**************************************************//
+// Footer
+//**************************************************//
+$footer-height: 100px;
+
+//**************************************************//
+// Sidenav
+//**************************************************//
+$sidenav-width: 280px;
+$sidenav-active: #3366ff;

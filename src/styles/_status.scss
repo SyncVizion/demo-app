@@ -1,0 +1,41 @@
+.ACTIVE,
+.ENABLED {
+  font-weight: 700;
+  color: #4bb543;
+}
+
+.CLOSED,
+.DENIED,
+.INACTIVE,
+.FINALIZED,
+.EXPIRED,
+.DISABLED {
+  font-weight: 700;
+  color: #f70000;
+}
+
+.PENDING {
+  font-weight: 700;
+  color: #ffab00;
+}
+
+.AWAITING_CHECK_IN {
+  font-weight: 700;
+  color: #ff6600;
+}
+
+.CANCELLED {
+  font-weight: 700;
+  color: #78909c;
+}
+
+.DEFAULT {
+  color: var(--mat-text-color);
+}
+
+.chip-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+}

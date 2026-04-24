@@ -1,0 +1,21 @@
+<mat-form-field
+  floatLabel="always"
+  appearance="outline"
+  [class]="{ 'w-100': true, 'pb-sm': bottomGap() }"
+  [subscriptSizing]="subscriptSizing()"
+>
+  <mat-label class="text-xl"> {{ label() }}</mat-label>
+  <input
+    matInput
+    [matTimepicker]="minutesPicker"
+    [name]="name()"
+    [placeholder]="placeholder()"
+    [inputMode]="inputmode()"
+    [formControlName]="formControlName()"
+    [readonly]="readonly()"
+  />
+  <mat-timepicker-toggle matIconSuffix [for]="minutesPicker" />
+  <mat-timepicker [interval]="interval()" #minutesPicker />
+
+  <mat-error>{{ errorMessage() }}</mat-error>
+</mat-form-field>

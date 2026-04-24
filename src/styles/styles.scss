@@ -1,0 +1,86 @@
+@use 'app-theme';
+@use 'action-bar';
+@use 'button';
+@use 'builder';
+@use 'card';
+@use 'card-info';
+@use 'chip';
+@use 'dialog';
+@use 'drag-drop';
+@use 'grid-filter-bar';
+@use 'grid';
+@use 'icon';
+@use 'login';
+@use 'multi-select';
+@use 'snack-bar';
+@use 'utility';
+@use 'layout';
+@use 'sidenav';
+@use 'loading';
+@use 'header';
+@use 'header-back';
+@use 'header-drop-menu';
+@use 'file-upload';
+@use 'badge.scss';
+@use 'bottom-sheet';
+@use 'status';
+@use 'form-builder';
+@use 'footer';
+@use 'label-tag';
+@use 'overlay-loader';
+@use 'tabs';
+@use 'radio';
+@use 'single-select';
+@use 'form-field';
+@use 'list';
+@use 'popover';
+@use 'mobile-nav';
+@use 'chart';
+
+body {
+  color: var(--mat-text-color);
+}
+
+h1 {
+  margin: 0 !important;
+}
+
+.schedule-view-groupDrag {
+  app-schedule-admin-job-event.schedule-job-event {
+    z-index: 10 !important;
+  }
+}
+
+.disabled-form-input-detail {
+  [matinput] {
+    color: #2a2a2a !important;
+  }
+  mat-label {
+    color: #2a2a2a !important;
+  }
+}
+
+.state-tax-padding > div {
+  padding-bottom: 14px !important;
+}
+
+.quickbooks-flex-cell {
+  mat-form-field {
+    padding-bottom: 0px !important;
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}
+
+pre {
+  font:
+    400 14px / 20px Roboto,
+    sans-serif;
+}
+.my-custom-stripe-card {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}

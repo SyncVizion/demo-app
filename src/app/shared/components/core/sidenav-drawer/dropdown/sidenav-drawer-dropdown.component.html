@@ -1,0 +1,62 @@
+<div
+  class="sidenav-drawer__category sidenav-drawer__category--dropdown"
+  [ngClass]="{
+    'sidenav-drawer__category--active': isRouteActive(navItem().route) && !isNested(),
+    'sidenav-drawer__category__nested--active': isRouteActive(navItem().route) && isNested(),
+  }"
+  (click)="toggleDropdown()"
+  (keydown.enter)="toggleDropdown()"
+>
+  <div class="sidenav-drawer__category--group">
+    @if (navItem()?.icon) {
+      <mat-icon>{{ navItem().icon }}</mat-icon>
+    }
+
+    <span [ngClass]="{ 'sidenav-drawer__category__title': !isNested() }">{{ navItem().name }}</span>
+  </div>
+
+  <mat-icon [ngClass]="'sidenav-drawer__dropdown-icon--' + (this.isOpen ? 'open' : 'closed')">
+    keyboard_arrow_left
+  </mat-icon>
+</div>
+
+<div
+  [id]="navItem().submenu.id"
+  class="sidenav-drawer__dropdown"
+  [ngClass]="{ 'sidenav-drawer__dropdown--open': isOpen, 'sidenav-drawer__dropdown--closed': !isOpen }"
+>
+  @for (submenu of navItem().submenu.items; track submenu) {
+    @if (submenu?.restriction) {
+      <ng-container *ngTemplateOutlet="dropdownContent; context: { $implicit: submenu }"></ng-container>
+    } @else {
+      <ng-container *ngTemplateOutlet="dropdownContent; context: { $implicit: submenu }"></ng-container>
+    }
+  }
+</div>
+
+<ng-template #dropdownContent let-submenu>
+  @if (submenu.submenu) {
+    <ik-sidenav-drawer-dropdown
+      [navItem]="submenu"
+      [isNested]="true"
+      [baseRoute]="navItem().route"
+    ></ik-sidenav-drawer-dropdown>
+  } @else {
+    @if (submenu.route) {
+      <a
+        class="sidenav-drawer__category sidenav-drawer__dropdown__item"
+        [routerLink]="baseRoute() + navItem().route + submenu.route"
+        (click)="onRoute(baseRoute() + navItem().route + submenu.route)"
+        routerLinkActive="sidenav-drawer__category__nested--active"
+      >
+        {{ submenu.name }}
+      </a>
+    }
+
+    @if (submenu.href) {
+      <a class="sidenav-drawer__category sidenav-drawer__dropdown__item" [href]="submenu.href">
+        {{ submenu.name }}
+      </a>
+    }
+  }
+</ng-template>

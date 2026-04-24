@@ -1,0 +1,10 @@
+<button mat-button [popoverTriggerFor]="popover">
+  <div class="header__text">{{ title() }}</div>
+  <mat-icon class="icon--default header-drop-menu-icon" iconPositionEnd>arrow_drop_down</mat-icon>
+</button>
+
+<app-popover-panel [position]="position()" [backgroundColor]="backgroundColor()" #popover="appPopoverPanel">
+  <ng-template matMenuContent>
+    <ng-content></ng-content>
+  </ng-template>
+</app-popover-panel>

@@ -1,0 +1,13 @@
+<div [formGroup]="formGroup">
+  <app-form-field-single-select
+    multiple
+    formControlName="select"
+    [placeholder]="placeholder()"
+    [items]="items()"
+    [idField]="idField()"
+    [bottomGap]="false"
+    [showColors]="showColors()"
+    subscriptSizing="dynamic"
+    (selectChange)="onChange()"
+  ></app-form-field-single-select>
+</div>

@@ -1,0 +1,11 @@
+@if ((auth.isLoading$ | async) || pageLoading) {
+  <app-splash-screen-layout [showError]="unknownError"></app-splash-screen-layout>
+} @else {
+  @if ((auth.isAuthenticated$ | async) && (auth.user$ | async); as user) {
+    <router-outlet />
+  } @else {
+    @if (auth.error$ | async; as error) {
+      <p>Error: {{ error.message }}</p>
+    }
+  }
+}

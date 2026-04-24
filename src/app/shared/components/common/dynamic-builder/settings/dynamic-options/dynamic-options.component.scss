@@ -1,0 +1,28 @@
+.dynamic-options {
+  display: flex;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__title {
+      font-weight: 500;
+      color: #374151;
+      margin: 0;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &__field {
+      flex: 1 1 0%;
+    }
+  }
+}

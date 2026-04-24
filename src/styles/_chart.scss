@@ -1,0 +1,15 @@
+.chart-wrapper {
+  .ngx-charts-outer {
+    height: auto !important;
+  }
+
+  .legend-wrap > ul {
+    background-color: transparent !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  text {
+    fill: var(--mat-text-color); /* Sets all text to white */
+  }
+}

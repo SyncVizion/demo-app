@@ -1,0 +1,10 @@
+<app-multi-select
+  class="grid-filter-search__min-height"
+  [formControl]="control"
+  [placeholder]="placeholder()"
+  (valueChange)="onMultiSelectValueChange()"
+>
+  <div appSuffix class="multi-select-container__search-icon" (click)="search()" (keydown)="search()">
+    <mat-icon aria-hidden="false" [attr.aria-label]="'search'" class="grid-filter__search-icon"> search </mat-icon>
+  </div>
+</app-multi-select>

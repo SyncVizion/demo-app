@@ -1,0 +1,246 @@
+@use '@angular/material' as mat;
+@use 'variables' as var;
+
+.app-btn {
+  align-items: center;
+  border: none;
+  border-radius: 24px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 4px 16px;
+  min-width: 64px;
+  height: 32px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &__text {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &--filled {
+    background-color: var(--mat-sys-background) !important;
+  }
+
+  &.icon-16 {
+    mat-icon {
+      height: 16px !important;
+      width: 16px !important;
+      font-size: 16px !important;
+      line-height: 1 !important;
+    }
+  }
+
+  &.icon-20 {
+    mat-icon {
+      height: 20px !important;
+      width: 20px !important;
+      font-size: 20px !important;
+      line-height: 1 !important;
+    }
+  }
+
+  &:not(:disabled, .app-btn--ghost):hover {
+    .app-btn__text {
+      text-decoration-line: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+  }
+
+  &:focus-visible:not(.app-btn--secondary, .app-btn--ghost, .app-btn--grid) {
+    outline: 2px solid var(--mat-sys-on-primary-fixed) !important;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 40%;
+    cursor: not-allowed;
+  }
+}
+
+.app-grid-icon-btn {
+  display: block;
+  height: fit-content;
+  width: fit-content;
+
+  button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    padding: 0 !important;
+
+    mat-icon {
+      height: 28px !important;
+      width: 28px !important;
+      font-size: 28px !important;
+      line-height: 1 !important;
+    }
+  }
+}
+
+@mixin button-coloring($background, $text) {
+  background-color: $background;
+  color: $text;
+}
+
+@mixin button-outline($outline-color, $outline-offset) {
+  outline: 2px solid $outline-color;
+  outline-offset: $outline-offset;
+}
+
+@mixin button-state($background-hover, $background-active, $outline-color, $box-shadow-focus) {
+  &:not(:disabled):hover {
+    background-color: $background-hover;
+    outline: 2px solid $outline-color;
+
+    &:focus {
+      outline: 2px solid $outline-color !important;
+    }
+  }
+
+  &:not(:disabled):active {
+    background-color: $background-active;
+  }
+
+  &:focus {
+    outline: 2px solid $outline-color !important;
+  }
+
+  &:focus-visible {
+    box-shadow:
+      0 0 0 2px #fff,
+      $box-shadow-focus;
+  }
+}
+
+// Brand Variant
+.app-btn--brand {
+  @include button-coloring(var(--mat-sys-primary), #fff);
+
+  // Sub Variants
+  &.app-btn--primary {
+    @include button-state(var(--mat-sys-primary-hover), var(--mat-sys-primary-active), none, none);
+  }
+
+  &.app-btn--secondary {
+    @include button-coloring(transparent, var(--mat-text-color));
+    @include button-outline(var(--mat-sys-primary), -2px);
+    @include button-state(
+      none,
+      var(--mat-sys-primary-fixed-dim),
+      var(--mat-sys-primary),
+      0 0 0 3.5px var(--mat-sys-on-primary-fixed)
+    );
+  }
+}
+
+// Subtle Variant
+.app-btn--subtle {
+  @include button-coloring(var(--mat-sys-subtle), #fff);
+
+  // Sub Variants
+  &.app-btn--primary {
+    @include button-state(var(--mat-sys-subtle-hover), var(--mat-sys-subtle-active), none, none);
+  }
+
+  &.app-btn--secondary {
+    @include button-coloring(transparent, var(--mat-text-color));
+    @include button-outline(var(--mat-sys-subtle), -2px);
+    @include button-state(
+      none,
+      var(--mat-sys-subtle-fixed-dim),
+      var(--mat-sys-subtle),
+      0 0 0 3.5px var(--mat-sys-on-primary-fixed)
+    );
+  }
+}
+
+// Danger Variant
+.app-btn--danger {
+  @include button-coloring(var(--mat-sys-danger), #fff);
+
+  // Sub Variants
+  &.app-btn--primary {
+    @include button-state(var(--mat-sys-danger-hover), var(--mat-sys-danger-active), none, none);
+  }
+
+  &.app-btn--secondary {
+    @include button-coloring(transparent, var(--mat-text-color));
+    @include button-outline(var(--mat-sys-danger), -2px);
+    @include button-state(
+      none,
+      var(--mat-sys-danger-fixed-dim),
+      var(--mat-sys-danger),
+      0 0 0 3.5px var(--mat-sys-on-primary-fixed)
+    );
+  }
+}
+
+// Ghost Variant
+.app-btn--ghost {
+  @include button-coloring(transparent, #333333);
+  border-radius: 2px;
+  padding: 0;
+
+  // Sub Variants
+  &.app-btn--primary {
+    color: var(--mat-sys-primary);
+  }
+
+  &:not(:disabled) {
+    &:active {
+      color: var(--mat-text-color);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mat-sys-on-primary-fixed) !important;
+  }
+}
+
+.app-btn--icon {
+  min-width: auto !important;
+}
+
+.app-btn__loader {
+  &--primary {
+    @include mat.progress-spinner-overrides(
+      (
+        active-indicator-color: var(--mat-sys-primary),
+      )
+    );
+  }
+
+  &--secondary {
+    @include mat.progress-spinner-overrides(
+      (
+        active-indicator-color: #fff,
+      )
+    );
+  }
+}
+
+@media screen and (max-width: var.$screen-sm-max) {
+  .app-btn {
+    height: 32px;
+    line-height: 22px;
+
+    &:not(.app-btn--ghost) {
+      font-size: 16px;
+      padding: 4px 8px;
+    }
+
+    mat-icon {
+      font-size: 20px;
+      height: 20px !important;
+      width: 20px !important;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+  }
+}

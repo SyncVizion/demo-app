@@ -1,0 +1,60 @@
+<app-cards-search placeholder="Search for sets by name" (searched)="onSearchChange($event)"></app-cards-search>
+
+<cdk-virtual-scroll-viewport class="vh-100" itemSize="200" appendOnly="true" minBufferPx="400" maxBufferPx="800">
+  <div class="card-container-buffer"></div>
+  <div class="row">
+    <div *cdkVirtualFor="let element of virtualDatasource">
+      @if (element?.id) {
+        <app-card class="grid-card" (click)="onRowClick(element)" (keydown.enter)="onRowClick(element)">
+          <div class="d-flex flex-column flex-nowrap align-items-center gap-2">
+            <div class="grid-card__img-container">
+              @if (element?.logo) {
+                @if (element?.logo.endsWith('.png') || element?.logo.endsWith('.jpg')) {
+                  <img [src]="element?.logo" alt="{{ element?.name }}" class="grid-card__image" />
+                } @else {
+                  <img [src]="element?.logo + '.webp'" alt="{{ element?.name }}" class="grid-card__image" />
+                }
+              } @else if (element?.symbol) {
+                @if (element?.symbol.endsWith('.png') || element?.symbol.endsWith('.jpg')) {
+                  <img [src]="element?.symbol" alt="{{ element?.name }}" class="grid-card__image" />
+                } @else {
+                  <img [src]="element?.symbol + '.webp'" alt="{{ element?.name }}" class="grid-card__image" />
+                }
+              } @else {
+                <img
+                  src="https://assets.tcgdex.net/en/base/base1/logo.webp"
+                  alt="{{ element?.name }}"
+                  class="grid-card__image"
+                />
+              }
+            </div>
+            <h2>{{ element?.name ? element?.name : '-' }}</h2>
+          </div>
+        </app-card>
+      }
+    </div>
+    @if (virtualDatasource?.loading()) {
+      <ng-container [ngTemplateOutlet]="gridLoadingTemplate"></ng-container>
+    }
+
+    @if (virtualDatasource?.noResults()) {
+      <div class="col-12">
+        <p class="text-center mt-5">No results found</p>
+      </div>
+    }
+  </div>
+  <div class="card-container-buffer"></div>
+</cdk-virtual-scroll-viewport>
+
+<ng-template #gridLoadingTemplate>
+  @for (l of [1, 2, 3, 4]; track l) {
+    <div>
+      <app-card class="virtual-card">
+        <div class="d-flex flex-column">
+          <div *skeletonLoading="true; height: 140; width: '100%'"></div>
+          <div *skeletonLoading="true; width: '50%'; height: 12; align: 'center'"></div>
+        </div>
+      </app-card>
+    </div>
+  }
+</ng-template>

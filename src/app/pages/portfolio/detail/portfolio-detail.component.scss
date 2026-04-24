@@ -1,0 +1,37 @@
+
+.test {
+  background: linear-gradient(135deg, rgba(30, 30, 40, 0.88), rgba(30, 30, 40, 0.72));
+  width: 100%;
+}
+
+.card-image-preview {
+  max-width: 20vw;
+}
+
+.quantity-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: auto;
+}
+
+.horizontal-card {
+  &__right-column {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+  }
+
+  &__image {
+    max-width: 80px;
+  }
+
+  &__right-align {
+    text-align: right;
+  }
+
+  &__price-button-container {
+    display: flex;
+    justify-content: right;
+    margin-top: auto;
+  }
+}

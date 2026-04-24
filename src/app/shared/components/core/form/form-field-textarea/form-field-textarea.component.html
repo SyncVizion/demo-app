@@ -1,0 +1,24 @@
+<mat-form-field
+  floatLabel="always"
+  appearance="outline"
+  [subscriptSizing]="subscriptSizing()"
+  [class]="{ 'w-100': true, 'pb-sm': bottomGap() }"
+>
+  @if (showLabel()) {
+    <mat-label class="text-xl"> {{ label() }}</mat-label>
+  }
+  <textarea
+    matInput
+    cdkTextareaAutosize
+    [cdkAutosizeMinRows]="cdkAutosizeMinRows()"
+    [cdkAutosizeMaxRows]="cdkAutosizeMaxRows()"
+    [formControlName]="formControlName()"
+    [maxlength]="maxlength()"
+  ></textarea>
+
+  @if (maxlength() && showMaxLength()) {
+    <mat-hint align="end">{{ controlValue()?.length || 0 }}/{{ maxlength() }}</mat-hint>
+  }
+
+  <mat-error>{{ errorMessage() }}</mat-error>
+</mat-form-field>

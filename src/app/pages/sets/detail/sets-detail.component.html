@@ -1,0 +1,64 @@
+<app-virtual-cards-grid
+  #virtualCardsGrid
+  [dataloader]="dataLoader"
+  (rowClick)="onRowClick($event)"
+  [headerBuffer]="false"
+  itemSize="158"
+  minBufferPx="450"
+  maxBufferPx="732"
+  cardClass="grid-card__height-300"
+>
+  <ng-template #cardContentHeader>
+    <app-card class="w-100 mt-4">
+      <div class="set-detail-image">
+        @if (set?.logo) {
+          @if (set?.logo.endsWith('.png') || set?.logo.endsWith('.jpg')) {
+            <img [src]="set?.logo" alt="{{ set?.name }}" class="grid-card__image" />
+          } @else {
+            <img [src]="set?.logo + '.webp'" alt="{{ set?.name }}" class="grid-card__image" />
+          }
+        } @else if (set?.symbol) {
+          @if (set?.symbol.endsWith('.png') || set?.symbol.endsWith('.jpg')) {
+            <img [src]="set?.symbol" alt="{{ set?.name }}" class="grid-card__image" />
+          } @else {
+            <img [src]="set?.symbol + '.webp'" alt="{{ set?.name }}" class="grid-card__image" />
+          }
+        } @else {
+          <img src="https://assets.tcgdex.net/en/base/base1/logo.webp" alt="{{ set?.name }}" class="grid-card__image" />
+        }
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <app-card-info header="Name" [text]="set?.name"></app-card-info>
+          <app-card-info header="Abbreviation" [text]="set?.ptcgoCode"></app-card-info>
+          <app-card-info header="Release Date" [text]="set?.releaseDate"></app-card-info>
+        </div>
+        <div class="col-6">
+          <app-card-info header="Serie" [text]="set?.series"></app-card-info>
+          <app-card-info header="Official Count" [text]="set?.printedTotal"></app-card-info>
+          <app-card-info header="Total Count" [text]="set?.total"></app-card-info>
+        </div>
+      </div>
+    </app-card>
+  </ng-template>
+  <ng-template #cardContent let-card="card">
+    <div class="grid-card__center">
+      @if (card?.image) {
+        <div class="grid-card__image-container">
+          @if (card?.image.endsWith('.png') || card?.image.endsWith('.jpg')) {
+            <img [src]="card?.image" alt="{{ card?.name }}" class="grid-card__image" />
+          } @else {
+            <img [src]="card?.image + '/low.webp'" alt="{{ card?.name }}" class="grid-card__image" />
+          }
+        </div>
+      } @else {
+        <div class="grid-card__image-container">
+          <img src="../../../../../assets/images/pokemon-back.png" [alt]="card?.name" class="grid-card__image" />
+        </div>
+      }
+      <div class="row text-start mt-3">
+        <h2 class="mb-0 grid-card__text">{{ card?.name ? card?.name : '-' }}</h2>
+      </div>
+    </div>
+  </ng-template>
+</app-virtual-cards-grid>

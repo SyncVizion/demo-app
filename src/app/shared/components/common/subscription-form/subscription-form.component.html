@@ -1,0 +1,24 @@
+<h2>Subscription Form</h2>
+<form [formGroup]="paymentElementForm" class="form">
+  <div class="row">
+    <div class="col-6">
+      <app-form-field-input label="First Name" formControlName="firstName"></app-form-field-input>
+    </div>
+    <div class="col-6"><app-form-field-input label="Last Name" formControlName="lastName"></app-form-field-input></div>
+
+    <app-form-field-input class="disabled" label="Email" formControlName="email"></app-form-field-input>
+  </div>
+
+  <app-action-bar>
+    <button
+      app-button
+      variant="brand"
+      emphasis="primary"
+      [disabled]="paying() || createCustomerLoading()"
+      [loading]="paying() || createCustomerLoading()"
+      (click)="save()"
+    >
+      {{ 'Complete Profile' }}
+    </button>
+  </app-action-bar>
+</form>

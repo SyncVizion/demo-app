@@ -1,0 +1,11 @@
+<div class="action-bar__buttons">
+  <ng-content select="[app-button][appPrefix]"> </ng-content>
+</div>
+
+@if (title()) {
+  <span class="action-bar__title">{{ title() }}</span>
+}
+
+<div class="action-bar__buttons">
+  <ng-content select="[app-button]:not([appPrefix])"> </ng-content>
+</div>

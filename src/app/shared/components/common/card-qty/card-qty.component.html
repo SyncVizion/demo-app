@@ -1,0 +1,14 @@
+<button
+  mat-icon-button
+  (click)="decrementQuantity()"
+  [disabled]="quantity() <= 0"
+  [class.icon--disabled]="quantity() <= 0"
+>
+  <mat-icon class="qty-icon">remove_circle_outline</mat-icon>
+</button>
+<span class="qty-text text-center" (click)="inputQtyClicked.emit()" (keydown)="inputQtyClicked.emit()">{{
+  quantity()
+}}</span>
+<button mat-icon-button (click)="incrementQuantity()">
+  <mat-icon class="qty-icon">add_circle</mat-icon>
+</button>

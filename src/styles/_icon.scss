@@ -1,0 +1,29 @@
+.icon {
+  display: inline-block;
+  line-height: 1;
+
+  mat-icon {
+    line-height: 1;
+  }
+
+  &--disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  &--default {
+    color: #212529;
+  }
+
+  &--danger {
+    color: #e32323;
+  }
+
+  &--success {
+    color: #3cbe36;
+  }
+
+  &--white {
+    color: #fff;
+  }
+}

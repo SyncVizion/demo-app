@@ -1,0 +1,20 @@
+.help-center {
+  &__type {
+    padding: 0px 8px;
+    border-radius: 999px;
+    font-weight: 600;
+    width: fit-content !important;
+
+    &--Bug {
+      background-color: #f851491a;
+      border: 1px solid #f85149;
+      color: #f85149;
+    }
+
+    &--Feature {
+      background-color: #388bfd1a;
+      border: 1px solid #388bfd66;
+      color: #4493f8;
+    }
+  }
+}

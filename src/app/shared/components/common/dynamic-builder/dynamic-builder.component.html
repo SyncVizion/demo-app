@@ -1,0 +1,19 @@
+<div cdkDropListGroup class="form-builder__container">
+  @if (!config().menu.disabled) {
+    <app-builder-elements-menu [title]="config().menu.title" class="form-builder__container__sidebar" />
+  }
+
+  @if (!config().canvas.disabled) {
+    <app-builder-canvas
+      [title]="config().canvas.title"
+      [dropCondition]="config().canvas.rowDropCondition"
+      [newElementBuilder]="config().canvas.newElementBuilder"
+      [hidePreview]="config().canvas.hidePreview"
+      class="flex-1"
+    />
+  }
+
+  @if (!config().settings.disabled) {
+    <app-element-field-settings [title]="config().settings.title" class="form-builder__container__sidebar" />
+  }
+</div>

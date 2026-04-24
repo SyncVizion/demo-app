@@ -1,0 +1,98 @@
+@use '@angular/material' as mat;
+@use 'variables' as var;
+
+.app-container {
+  flex: 1 0 auto;
+  width: 98%;
+  margin: 24px auto 24px;
+  position: relative;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.app-container-mobile {
+  background-color: var(--mat-sys-background);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  text-align: left;
+  transition: 0.3s;
+  padding: 0 8px;
+}
+
+.app-header {
+  z-index: 2;
+  flex-shrink: 0;
+  height: 64px;
+  width: 100%;
+  padding: 0 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--mat-sys-surface);
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color) !important;
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 rgba(0, 0, 0, 0)), var(--tw-ring-shadow, 0 0 rgba(0, 0, 0, 0)), var(--tw-shadow) !important;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 6px;
+    font-size: 32px;
+    font-weight: 500;
+    padding-left: 12px;
+    margin-right: auto;
+  }
+
+  &__button-icon {
+    height: auto !important;
+    width: auto !important;
+    padding: 0 !important;
+    margin-top: 4px;
+
+    .mat-icon {
+      height: 36px !important;
+      width: 36px !important;
+      font-size: 36px !important;
+      cursor: pointer;
+      color: #64748b;
+    }
+  }
+
+  &__end-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-right: 4px;
+  }
+
+  &__refresh {
+    @include mat.badge-overrides(
+      (
+        background-color: orange,
+        small-size-text-size: 1px,
+        small-size-container-size: 10px,
+        legacy-small-size-container-size: 0,
+      )
+    );
+  }
+}
+
+@media screen and (max-width: var.$header-screen-sm-max) {
+  .app-header {
+    &__title {
+      margin-right: 0;
+    }
+
+    &__button-icon {
+      .mat-icon {
+        height: 32px !important;
+        width: 32px !important;
+        font-size: 32px !important;
+      }
+    }
+  }
+}

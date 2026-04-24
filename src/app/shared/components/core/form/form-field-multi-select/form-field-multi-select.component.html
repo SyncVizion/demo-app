@@ -1,0 +1,58 @@
+<mat-form-field
+  floatLabel="always"
+  appearance="outline"
+  [class]="{ 'w-100': true, 'pb-sm': bottomGap(), disabled: loading() || control?.pending }"
+  [subscriptSizing]="subscriptSizing()"
+  >
+  <mat-label class="text-xl"> {{ label() }}</mat-label>
+  <mat-chip-grid
+    #chipGrid
+    [disabled]="loading() || control?.pending"
+    [formControlName]="formControlName()"
+    (click)="operationTrigger.openPanel()"
+    (keydown.enter)="operationTrigger.openPanel()"
+    >
+    @for (item of value; track item) {
+      <mat-chip-row class="chip-grid__search" (removed)="remove(item)" [value]="item">
+        {{ item.name }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    }
+  </mat-chip-grid>
+
+  <input
+    #selectionInput
+    #operationTrigger="matAutocompleteTrigger"
+    [(ngModel)]="currentSelection"
+    [value]="currentSelection()"
+    [ngModelOptions]="{ standalone: true }"
+    [placeholder]="'Select ' + label()"
+    [matChipInputFor]="chipGrid"
+    [matAutocomplete]="auto"
+    disabled
+    />
+
+    <mat-autocomplete #auto="matAutocomplete" [hideSingleSelectionIndicator]="true" (optionSelected)="selected($event)">
+      @for (item of filteredSelections(); track item) {
+        <mat-option [value]="item">
+          {{ item.name }}
+        </mat-option>
+      }
+    </mat-autocomplete>
+    <mat-icon
+      matSuffix
+      class="pointer"
+      [class]="{ 'p-none': loading() || control?.pending }"
+      (click)="loading() || control?.pending ? null : operationTrigger.openPanel()"
+      (keydown.enter)="loading() || control?.pending ? null : operationTrigger.openPanel()"
+      >arrow_drop_down</mat-icon
+      >
+
+      @if (loading() || control?.pending) {
+        <mat-spinner matSuffix class="mr-sm d-inline-block" [strokeWidth]="2" [diameter]="20"></mat-spinner>
+      }
+
+      <mat-error>{{ errorMessage() }}</mat-error>
+    </mat-form-field>

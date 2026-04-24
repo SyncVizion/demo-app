@@ -1,0 +1,13 @@
+.single-select__trigger {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 8px;
+
+  &__color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+}

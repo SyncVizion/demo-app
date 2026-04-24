@@ -1,0 +1,54 @@
+<div class="form-field-settings__container">
+  @if (editorCanvasService.selectedElement(); as selectedField) {
+    <h3 class="form-field-settings__title">{{ title() ? title() : 'Settings' }}</h3>
+    <div class="form-field-settings__options">
+      @for (setting of elementSettings(); track setting.key) {
+        @switch (setting.type) {
+          @case ('text') {
+            <mat-form-field class="w-100">
+              <mat-label>{{ setting.label }}</mat-label>
+              <input
+                matInput
+                [ngModel]="elementValues()[setting.key]"
+                (ngModelChange)="updateField(selectedField.id, setting.key, $event)"
+              />
+            </mat-form-field>
+          }
+
+          @case ('checkbox') {
+            <div class="form-field-settings__checkbox">
+              <mat-checkbox
+                [ngModel]="elementValues()[setting.key]"
+                (ngModelChange)="updateField(selectedField.id, setting.key, $event)"
+              >
+                {{ setting.label }}
+              </mat-checkbox>
+            </div>
+          }
+
+          @case ('select') {
+            <mat-form-field class="w-100">
+              <mat-label>{{ setting.label }}</mat-label>
+              <mat-select
+                [ngModel]="elementValues()[setting.key]"
+                (ngModelChange)="updateField(selectedField.id, setting.key, $event)"
+              >
+                @for (option of setting.options || []; track option.value) {
+                  <mat-option [value]="option.value">{{ option.label }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          }
+
+          @case ('dynamic-options') {
+            <app-dynamic-options
+              [title]="setting.label"
+              [options]="elementValues()[setting.key]"
+              (optionsChange)="updateField(selectedField.id, setting.key, $event)"
+            />
+          }
+        }
+      }
+    </div>
+  }
+</div>

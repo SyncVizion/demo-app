@@ -1,0 +1,25 @@
+<mat-form-field
+  floatLabel="always"
+  appearance="outline"
+  [class]="{ 'w-100': true, 'pb-sm': bottomGap() }"
+  [subscriptSizing]="subscriptSizing()"
+>
+  <mat-label class="text-xl"> {{ label() }}</mat-label>
+  <input
+    matInput
+    phoneMask
+    placeholder="(___) ___-____"
+    inputmode="tel"
+    name="phone"
+    maxlength="14"
+    [formControlName]="formControlName()"
+    [readonly]="readonly()"
+    (keyup.enter)="onEnter.emit()"
+  />
+
+  @if (loading() || control?.pending) {
+    <mat-spinner matSuffix class="mr-sm" [strokeWidth]="2" [diameter]="20"></mat-spinner>
+  }
+
+  <mat-error>{{ errorMessage() }}</mat-error>
+</mat-form-field>

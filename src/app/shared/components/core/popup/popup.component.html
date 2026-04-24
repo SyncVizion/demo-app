@@ -1,0 +1,17 @@
+@if (data.prefixIcon) {
+  <mat-icon>{{ data.prefixIcon }}</mat-icon>
+}
+
+<span class="base-snackbar__message"> {{ data.message }}</span>
+
+@if (data?.showCloseIcon) {
+  <button
+    mat-icon-button
+    class="base-snackbar__close-icon"
+    matTooltip="Close"
+    (click)="snackBarRef.dismiss()"
+    (keydown.enter)="snackBarRef.dismiss()"
+  >
+    <mat-icon [class]="data?.invertCloseIcon ? 'icon--white' : ''">close</mat-icon>
+  </button>
+}

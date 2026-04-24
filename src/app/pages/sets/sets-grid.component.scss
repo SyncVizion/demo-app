@@ -1,0 +1,32 @@
+@use '../../../styles/variables' as var;
+
+.card-container-buffer {
+  height: 70px;
+  width: 100%;
+}
+
+.grid-card {
+  align-items: center;
+  justify-content: space-evenly;
+  height: 200px;
+
+  &__center {
+    text-align: center;
+  }
+
+  &__img-container {
+    align-content: center;
+  }
+
+  &__image {
+    width: 35vw;
+  }
+
+  &__text {
+    padding-top: 16px;
+  }
+}
+
+.virtual-card {
+  height: 200px;
+}

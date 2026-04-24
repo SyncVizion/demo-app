@@ -1,0 +1,131 @@
+@if (!loading) {
+  <app-cards-search
+    placeholder="Search for cards"
+    (searched)="virtualCardsGrid.onSearchChange($event)"
+  ></app-cards-search>
+  <app-virtual-cards-grid
+    #virtualCardsGrid
+    itemSize="161"
+    minBufferPx="322"
+    maxBufferPx="644"
+    [dataloader]="dataLoader"
+    viewType="single"
+    (rowClick)="onRowClick($event)"
+  >
+    <ng-template #cardContent let-card="card">
+      @let cardSource = card?.cardSource;
+      @if (cardSource?.image) {
+        @if (cardSource?.image.endsWith('.png') || cardSource?.image.endsWith('.jpg')) {
+          <img [src]="cardSource?.image" alt="{{ card?.name }}" class="horizontal-card__image" />
+        } @else {
+          <img [src]="cardSource?.image + '/low.webp'" alt="{{ card?.name }}" class="horizontal-card__image" />
+        }
+      } @else {
+        <img src="../../../../../assets/images/pokemon-back.png" [alt]="card?.name" class="horizontal-card__image" />
+      }
+      <div>
+        <h2 class="mb-0 virtual-grid-card__text">{{ cardSource?.name ? cardSource?.name : '-' }}</h2>
+        <h5 class="mb-0 virtual-grid-card__text">{{ cardSource?.setName ? cardSource?.setName : '-' }}</h5>
+        <h5 class="mb-2 virtual-grid-card__text">{{ cardSource?.illustrator ? cardSource?.illustrator : '-' }}</h5>
+        <h5 class="mb-0 virtual-grid-card__text">
+          <app-label-tag-chip [name]="card?.condition?.name" [color]="card?.condition?.color"></app-label-tag-chip>
+        </h5>
+      </div>
+      <div class="horizontal-card__right-column">
+        <h5 class="mb-0 horizontal-card__right-align">{{ card?.cardType | cardType }}</h5>
+        <h3 class="mb-0 horizontal-card__right-align">
+          {{ card | tcgMarketPrice }}
+        </h3>
+        <h5 class="mb-3 horizontal-card__right-align">
+          {{ 'Qty: ' + (card?.quantity ? card?.quantity : '5') }}
+        </h5>
+        <div
+          class="mb-0 horizontal-card__price-button-container"
+          (click)="$event.stopPropagation()"
+          (keydown)="$event.stopPropagation()"
+        >
+          <mat-icon
+            class="virtual-grid-card__menu-icon"
+            [matMenuTriggerFor]="menu"
+            [matMenuTriggerData]="{ card: card }"
+            >more_horiz</mat-icon
+          >
+        </div>
+      </div>
+    </ng-template>
+  </app-virtual-cards-grid>
+} @else {
+  <app-loading type="double"></app-loading>
+}
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-card="card">
+    <button
+      mat-menu-item
+      (click)="quantityControl.setValue(card.quantity)"
+      [popoverTriggerFor]="updateQuantityPopover"
+      [popoverTriggerData]="card"
+    >
+      <mat-icon>change_circle</mat-icon>
+      <span>{{ 'Update Quantity' }}</span>
+    </button>
+    <button mat-menu-item [popoverTriggerFor]="removeCardPopover" [popoverTriggerData]="card">
+      <mat-icon>remove_selection</mat-icon>
+      <span>{{ 'Remove Card' }}</span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<app-popover-panel #updateQuantityPopover="appPopoverPanel" position="center" width="300px">
+  <ng-template let-data>
+    <app-popover-panel-content>
+      <h3 class="text-center">Quantity</h3>
+      <div class="mb-3 quantity-container">
+        <button
+          [disabled]="quantityControl?.value <= 1"
+          app-button-icon
+          size="large"
+          variant="brand"
+          emphasis="primary"
+          (click)="quantityControl.setValue(quantityControl?.value - 1)"
+        >
+          <mat-icon>remove</mat-icon>
+        </button>
+        <h4>{{ quantityControl?.value }}</h4>
+        <button
+          app-button-icon
+          variant="brand"
+          emphasis="primary"
+          (click)="quantityControl?.setValue(quantityControl?.value + 1)"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <app-action-bar>
+        <button app-button variant="subtle" emphasis="secondary" (click)="updateQuantityPopover.close()">Cancel</button>
+        <button
+          app-button
+          variant="brand"
+          emphasis="primary"
+          (click)="updateQuantity(data, quantityControl?.value, updateQuantityPopover)"
+        >
+          Save
+        </button>
+      </app-action-bar>
+    </app-popover-panel-content>
+  </ng-template>
+</app-popover-panel>
+
+<app-popover-panel #removeCardPopover="appPopoverPanel" position="center" backgroundColor="#252c46" width="300px">
+  <ng-template let-data>
+    <app-popover-panel-content>
+      <p class="fs-6">Are you sure you want to remove card from your collection '{{ data?.name }}'?</p>
+      <app-action-bar>
+        <button app-button variant="subtle" emphasis="secondary" (click)="removeCardPopover.close()">Cancel</button>
+        <button app-button variant="brand" emphasis="danger" (click)="removeCard(data, removeCardPopover)">
+          Remove
+        </button>
+      </app-action-bar>
+    </app-popover-panel-content>
+  </ng-template>
+</app-popover-panel>

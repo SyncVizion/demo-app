@@ -1,0 +1,30 @@
+<mat-form-field class="w-100">
+  <mat-label>{{ element().label }}</mat-label>
+
+  @if (element().maxLength) {
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      [cdkAutosizeMinRows]="element().cdkAutosizeMinRows || 3"
+      [cdkAutosizeMaxRows]="element().cdkAutosizeMinRows || 5"
+      [type]="element().inputType || 'text'"
+      [required]="element().required"
+      [placeholder]="element().placeholder ?? ''"
+      [maxLength]="element().maxLength"
+    ></textarea>
+  } @else {
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      [cdkAutosizeMinRows]="element().cdkAutosizeMinRows || 3"
+      [cdkAutosizeMaxRows]="element().cdkAutosizeMinRows || 5"
+      [type]="element().inputType || 'text'"
+      [required]="element().required"
+      [placeholder]="element().placeholder ?? ''"
+    ></textarea>
+  }
+
+  @if (element().maxLength) {
+    <mat-hint align="end">{{ this.matControl()?.value?.length || 0 }}/{{ element().maxLength }}</mat-hint>
+  }
+</mat-form-field>

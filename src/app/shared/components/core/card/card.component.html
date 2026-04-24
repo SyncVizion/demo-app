@@ -1,0 +1,19 @@
+<ng-content select="app-card-header,[app-card-header]"></ng-content>
+
+@if (expanded) {
+  <app-card-content
+    [class]="{
+      'card__content--closed': !expanded,
+      'card__content--loading': loading(),
+    }"
+    class="card__content"
+    [animate.enter]="!firstLoad ? 'expand-animation' : ''"
+    [animate.leave]="!firstLoad ? 'collapse-animation' : ''"
+  >
+    @if (!loading()) {
+      <ng-content></ng-content>
+    } @else {
+      <mat-spinner></mat-spinner>
+    }
+  </app-card-content>
+}

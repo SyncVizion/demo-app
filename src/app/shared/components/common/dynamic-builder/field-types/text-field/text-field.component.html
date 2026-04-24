@@ -1,0 +1,9 @@
+<mat-form-field class="w-100">
+  <mat-label>{{ element().label }}</mat-label>
+  <input
+    matInput
+    [type]="element().inputType || 'text'"
+    [required]="element().required"
+    [placeholder]="element().placeholder ?? ''"
+  />
+</mat-form-field>

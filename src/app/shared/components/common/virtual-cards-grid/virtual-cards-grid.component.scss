@@ -1,0 +1,31 @@
+@use '../../../../../styles/variables' as var;
+
+:host(.overall-container) {
+  display: block;
+  position: relative;
+}
+
+.card-container-buffer {
+  height: 70px;
+  width: 100%;
+}
+
+.virtual-cards {
+  &__grid {
+    height: 395px;
+
+    &__content {
+      text-align: center;
+    }
+  }
+
+  &__single {
+    height: 145px;
+
+    &__content {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+  }
+}

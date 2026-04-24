@@ -1,0 +1,31 @@
+.cdk-drop-list-dragging:not(.form-elements-menu__options) {
+  border: 2px solid lightgray !important;
+  background-color: lightgray;
+}
+
+.export-form {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__field-item {
+    flex: 1;
+  }
+
+  &--width-full {
+    width: 100%;
+  }
+}
+
+::view-transition-old(.field-transition),
+::view-transition-new(.field-transition) {
+  height: 100%;
+}

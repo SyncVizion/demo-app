@@ -1,0 +1,8 @@
+<span class="schedule-job-event__title">{{ job()?.name }}</span>
+<span class="schedule-job-event__account">
+  {{ job()?.accountName }}
+</span>
+<!-- <span class="schedule-job-event__status" [style.color]="display().color">{{ job()?.status?.name ?? 'No Status' }}</span> -->
+<span class="schedule-job-event__time">
+  {{ job()?.startTime | date: 'h:mm' }} - {{ job()?.endTime | date: 'shortTime' }}
+</span>
