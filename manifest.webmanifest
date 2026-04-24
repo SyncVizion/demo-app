@@ -1,0 +1,23 @@
+{
+  "name": "card-market-ui",
+  "short_name": "card-market",
+  "theme_color": "#ffffff",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/images/SyncVizion-logo.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/images/SyncVizion-logo.png",
+      "sizes": "320x136",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}
