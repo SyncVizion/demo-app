@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1777047234587,
+  "timestamp": 1777056040107,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -12,11 +12,11 @@
       },
       "urls": [
         "/index.html",
-        "/main-RQM3WK4G.js",
+        "/main-W46OQJOO.js",
         "/manifest.webmanifest",
         "/polyfills-RONBT3RY.js",
         "/scripts-TTWY4XDY.js",
-        "/styles-VVPUANQK.css"
+        "/styles-RYCPVR3Y.css"
       ],
       "patterns": []
     },
@@ -32,6 +32,10 @@
         "/assets/images/background.jpg",
         "/assets/images/demo/logo.jpeg",
         "/assets/images/demo/square-logo.jpeg",
+        "/assets/images/payments/amex.png",
+        "/assets/images/payments/discover.png",
+        "/assets/images/payments/mastercard.png",
+        "/assets/images/payments/visa.png",
         "/assets/images/pokemon-back.png",
         "/media/background-QAL2WIGK.jpg"
       ],
@@ -44,14 +48,18 @@
     "/assets/images/background.jpg": "161bc1a1c88e60af965aba419f8a69fbdb4be7c6",
     "/assets/images/demo/logo.jpeg": "4b05c912d3ec57797e9cc55a0d86d1b5b58994e4",
     "/assets/images/demo/square-logo.jpeg": "3234c4a7baeca51f7d98c2b0efd965b0edb56bc2",
+    "/assets/images/payments/amex.png": "0511c08d65fdb6c4f59dffff0b997f910da2f62c",
+    "/assets/images/payments/discover.png": "e7c49fc08d379b90ede202a29ed3dc1035f25bd8",
+    "/assets/images/payments/mastercard.png": "b9422439bd04cf3a1b68c68b59f158d8b9ae8d6f",
+    "/assets/images/payments/visa.png": "b9236a1c103440b90252777665065bdfe190e4cd",
     "/assets/images/pokemon-back.png": "4236a31547a801f89eb0063d1c9f86aa5c4bca79",
-    "/index.html": "83e26967990c68fea65b27c4085a675fb85002d2",
-    "/main-RQM3WK4G.js": "5d0db1736d334da511c9370afe27d4a7a75eae66",
+    "/index.html": "0dcffa2af1ee435eba65d94e8571c1f7b1d11228",
+    "/main-W46OQJOO.js": "124cd1207959638a19beb8a15735dd0bd2e461f0",
     "/manifest.webmanifest": "fc2ab69efcf6f1a5b249dbf37d5e4ccc320f667f",
     "/media/background-QAL2WIGK.jpg": "161bc1a1c88e60af965aba419f8a69fbdb4be7c6",
     "/polyfills-RONBT3RY.js": "e2fc940497ab57ce4c244eac30093b88a7f37d06",
     "/scripts-TTWY4XDY.js": "59aa489af6324127a3d773836250da08639d4b26",
-    "/styles-VVPUANQK.css": "c75104a63d367555077c2ac0c50f1eacef57d271"
+    "/styles-RYCPVR3Y.css": "e02bd332ae6302364d2c52a3edeeae9f9353c804"
   },
   "navigationUrls": [
     {
