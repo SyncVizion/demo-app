@@ -25,7 +25,7 @@ export class SidenavDrawerComponent implements OnInit {
 
   Application = App;
 
-  logoUrl = `../../assets/images/${environment.companyFolder}/logo.jpeg`;
+  logoUrl = `assets/images/${environment.companyFolder}/logo.jpeg`;
 
   ngOnInit() {
     this.userAccessService.user$.subscribe((ua) => {

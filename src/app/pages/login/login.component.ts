@@ -17,5 +17,5 @@ export class LoginComponent {
   passwordField = 'password';
   loginError = false;
   loading = false;
-  logoUrl = `../../assets/images/${environment.companyFolder}/logo.jpeg`;
+  logoUrl = `assets/images/${environment.companyFolder}/logo.jpeg`;
 }

@@ -22,9 +22,7 @@
               "browser": ""
             },
             "index": "src/index.html",
-            "polyfills": [
-              "src/polyfills.ts"
-            ],
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "src/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "allowedCommonJsDependencies": [
@@ -37,17 +35,9 @@
               "pdfmake/build/pdfmake",
               "pdfmake/build/vfs_fonts"
             ],
-            "assets": [
-              "src/assets",
-              "src/manifest.webmanifest"
-            ],
-            "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ],
+            "assets": ["src/assets", "src/manifest.webmanifest"],
+            "styles": ["node_modules/bootstrap/dist/css/bootstrap.min.css", "src/styles/styles.scss"],
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
             "extractLicenses": false,
             "sourceMap": true,
             "optimization": false,
@@ -55,9 +45,7 @@
             "serviceWorker": "ngsw-config.json",
             "browser": "src/main.ts",
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "."
-              ]
+              "includePaths": ["."]
             }
           },
           "configurations": {
@@ -141,16 +129,11 @@
           "builder": "@angular/build:karma",
           "options": {
             "main": "src/test.ts",
-            "polyfills": [
-              "src/polyfills.ts"
-            ],
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/assets",
-              "src/manifest.webmanifest"
-            ],
+            "assets": ["src/assets", "src/manifest.webmanifest"],
             "styles": [],
             "scripts": [],
             "webWorkerTsConfig": "tsconfig.worker.json"
@@ -159,11 +142,11 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

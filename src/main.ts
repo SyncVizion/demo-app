@@ -37,7 +37,7 @@ bootstrapApplication(AppComponent, {
       clientId: environment.auth0ClientId,
       authorizationParams: {
         audience: environment.auth0Audience,
-        redirect_uri: globalThis.location.origin,
+        redirect_uri: globalThis.location.origin + '/demo-app',
       },
       httpInterceptor: {
         allowedList: environment.auth0AllowedList,
