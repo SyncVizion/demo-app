@@ -1,8 +1,8 @@
 {
   "name": "card-market-ui",
   "short_name": "card-market",
-  "theme_color": "#742608",
-  "background_color": "#742608",
+  "theme_color": "#ffffff",
+  "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
