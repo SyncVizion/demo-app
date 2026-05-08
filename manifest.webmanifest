@@ -1,6 +1,6 @@
 {
-  "name": "card-market-ui",
-  "short_name": "card-market",
+  "name": "Pdexium",
+  "short_name": "Pdexium",
   "theme_color": "#ffffff",
   "background_color": "#fafafa",
   "display": "standalone",
@@ -8,15 +8,15 @@
   "start_url": "./",
   "icons": [
     {
-      "src": "assets/images/logo.jpeg",
+      "src": "assets/images/pokemon-icon.png",
       "sizes": "180x180",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "assets/images/logo.jpeg",
+      "src": "assets/images/pokemon-icon.png",
       "sizes": "320x136",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "maskable any"
     }
   ]
