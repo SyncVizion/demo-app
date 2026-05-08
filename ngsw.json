@@ -1,0 +1,85 @@
+{
+  "configVersion": 1,
+  "timestamp": 1778267344857,
+  "index": "/demo-app/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/demo-app/index.html",
+        "/demo-app/main-CV2MWQIV.js",
+        "/demo-app/manifest.webmanifest",
+        "/demo-app/polyfills-RONBT3RY.js",
+        "/demo-app/scripts-TTWY4XDY.js",
+        "/demo-app/styles-6VEBHRYF.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/demo-app/assets/images/SyncVizion-logo.png",
+        "/demo-app/assets/images/background.jpg",
+        "/demo-app/assets/images/demo/logo.jpeg",
+        "/demo-app/assets/images/demo/square-logo.jpeg",
+        "/demo-app/assets/images/logo.jpeg",
+        "/demo-app/assets/images/payments/amex.png",
+        "/demo-app/assets/images/payments/discover.png",
+        "/demo-app/assets/images/payments/mastercard.png",
+        "/demo-app/assets/images/payments/visa.png",
+        "/demo-app/assets/images/pokemon-back.png",
+        "/demo-app/media/background-QAL2WIGK.jpg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/demo-app/assets/images/SyncVizion-logo.png": "3234c4a7baeca51f7d98c2b0efd965b0edb56bc2",
+    "/demo-app/assets/images/background.jpg": "161bc1a1c88e60af965aba419f8a69fbdb4be7c6",
+    "/demo-app/assets/images/demo/logo.jpeg": "4b05c912d3ec57797e9cc55a0d86d1b5b58994e4",
+    "/demo-app/assets/images/demo/square-logo.jpeg": "3234c4a7baeca51f7d98c2b0efd965b0edb56bc2",
+    "/demo-app/assets/images/logo.jpeg": "4b05c912d3ec57797e9cc55a0d86d1b5b58994e4",
+    "/demo-app/assets/images/payments/amex.png": "0511c08d65fdb6c4f59dffff0b997f910da2f62c",
+    "/demo-app/assets/images/payments/discover.png": "e7c49fc08d379b90ede202a29ed3dc1035f25bd8",
+    "/demo-app/assets/images/payments/mastercard.png": "b9422439bd04cf3a1b68c68b59f158d8b9ae8d6f",
+    "/demo-app/assets/images/payments/visa.png": "b9236a1c103440b90252777665065bdfe190e4cd",
+    "/demo-app/assets/images/pokemon-back.png": "4236a31547a801f89eb0063d1c9f86aa5c4bca79",
+    "/demo-app/index.html": "ec5574f2eca17f463343a979ae613fddabf245ab",
+    "/demo-app/main-CV2MWQIV.js": "d6967c2bd8d12bf515d8c642fcac6ef6706f823d",
+    "/demo-app/manifest.webmanifest": "3ddb9ec3da8e20490c02645c0ec6599a2671b990",
+    "/demo-app/media/background-QAL2WIGK.jpg": "161bc1a1c88e60af965aba419f8a69fbdb4be7c6",
+    "/demo-app/polyfills-RONBT3RY.js": "e2fc940497ab57ce4c244eac30093b88a7f37d06",
+    "/demo-app/scripts-TTWY4XDY.js": "59aa489af6324127a3d773836250da08639d4b26",
+    "/demo-app/styles-6VEBHRYF.css": "6f565a5fc1ce614add14307c54c7712968ec0a5d"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

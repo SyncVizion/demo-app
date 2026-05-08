@@ -1,0 +1,9 @@
+{
+  "roles": {
+    "DEVELOPER": "Developer",
+    "ADMINISTRATOR": "Administrator",
+    "ADMINISTRATOR_ASSISTANT": "Administrator Assistant",
+    "TECH": "Tech",
+    "SYSTEM": "System"
+  }
+}

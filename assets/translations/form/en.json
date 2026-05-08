@@ -1,0 +1,115 @@
+{
+  "form": {
+    "common": {
+      "required": "This is a required field"
+    },
+    "firstName": {
+      "required": "First Name is a required field",
+      "whitespace": "First Name requires at least one non-whitespace character"
+    },
+    "lastName": {
+      "required": "Last Name is a required field",
+      "whitespace": "Last Name requires at least one non-whitespace character"
+    },
+    "email": {
+      "required": "Email is a required field",
+      "email": "Email is invalid",
+      "duplicate": "Email already exists",
+      "duplicateEmailWithinForms": "Email already exists in another form",
+      "notFound": "Account not found for that email",
+      "whitespace": "Email requires at least one non-whitespace character"
+    },
+    "password": {
+      "required": "Password is a required field"
+    },
+    "confirmPassword": {
+      "required": "Confirm Password is a required field"
+    },
+    "currentPassword": {
+      "required": "Current Password is a required field"
+    },
+    "newPassword": {
+      "required": "New Password is a required field",
+      "minlength": "New Password must be at least 8 characters long"
+    },
+    "confirmNewPassword": {
+      "required": "Confirm New Password is a required field",
+      "minlength": "Confirm New Password must be at least 8 characters long",
+      "passwordMatch": "Passwords do not match"
+    },
+    "name": {
+      "required": "Name is a required field",
+      "duplicate": "Name already exists",
+      "maxlength": "Name must be less than 46 characters"
+    },
+    "site": {
+      "required": "Site is a required field"
+    },
+    "type": {
+      "required": "Type is a required field"
+    },
+    "role": {
+      "required": "Role is a required field"
+    },
+    "description": {
+      "maxLines": "Description must be less than 11 lines"
+    },
+    "visitNotes": {
+      "maxLines": "Visit notes must not exceed 8 lines"
+    },
+    "additionalNotes": {
+      "maxLines": "Additional parts used must not exceed 4 lines"
+    },
+    "visitType": {
+      "required": "Visit Type is a required field"
+    },
+    "date": {
+      "required": "Date is a required field",
+      "invalid": "Date is invalid"
+    },
+    "notes": {
+      "required": "Note is a required field",
+      "maxlength": "Note must be less than 80 characters"
+    },
+    "users": {
+      "required": "Users is a required field"
+    },
+    "account": {
+      "required": "Account is a required field"
+    },
+    "status": {
+      "required": "Status is a required field"
+    },
+    "job": {
+      "required": "Job is a required field",
+      "conflictingJob": "This job conflicts with another job in the same time slot",
+      "sameJob": "This job already is assigned to this user."
+    },
+    "quantity": {
+      "required": "Quantity is a required field",
+      "max": "Quantity can not exceed available amount"
+    },
+    "warehouses": {
+      "required": "Locations is a required field"
+    },
+    "parentGroup": {
+      "required": "Parent Group is a required field"
+    },
+    "existingTags": {
+      "required": "This is a required field"
+    },
+    "workflowItem": {
+      "required": "Workflow item is a required field"
+    },
+    "key": {
+      "required": "Key is a required field",
+      "noWhitespace": "Key must not contain any whitespace"
+    },
+    "application": {
+      "required": "Application is a required field"
+    },
+    "roles": {
+      "required": "User is required to have at least 1 role"
+    }
+  }
+}
