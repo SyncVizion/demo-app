@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1778616395568,
+  "timestamp": 1778773108142,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -12,11 +12,11 @@
       },
       "urls": [
         "/index.html",
-        "/main-27Q7GBHO.js",
+        "/main-KWPBH7RF.js",
         "/manifest.webmanifest",
         "/polyfills-RONBT3RY.js",
         "/scripts-TTWY4XDY.js",
-        "/styles-YR6KDYXI.css"
+        "/styles-HLC72CCH.css"
       ],
       "patterns": []
     },
@@ -54,12 +54,12 @@
     "/assets/images/payments/visa.png": "b9236a1c103440b90252777665065bdfe190e4cd",
     "/assets/images/pokemon-back.png": "4236a31547a801f89eb0063d1c9f86aa5c4bca79",
     "/assets/images/pokemon-icon.png": "4a17b1367c9abe8776f746594e5f73c64339e7eb",
-    "/index.html": "2d5fd977729aa92be0721df6a56e7b2803338258",
-    "/main-27Q7GBHO.js": "82769de6a89420719c3f5cb04cab30c286eae083",
+    "/index.html": "26030a744aac0322a4cab28f8d71c2174b6366ad",
+    "/main-KWPBH7RF.js": "55f9f65fa551a2ccf2b7fe45a94cad1bdcffdf60",
     "/manifest.webmanifest": "b7078c66cea479c206f0805dc912bbe6e4bfa607",
     "/polyfills-RONBT3RY.js": "e2fc940497ab57ce4c244eac30093b88a7f37d06",
     "/scripts-TTWY4XDY.js": "59aa489af6324127a3d773836250da08639d4b26",
-    "/styles-YR6KDYXI.css": "f204656e2647bf8e8bba67407e153baa35d432b2"
+    "/styles-HLC72CCH.css": "13928e2f5d8ea8dc14a9dd936f8899befb3e29b2"
   },
   "navigationUrls": [
     {
