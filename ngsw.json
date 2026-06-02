@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1778854942130,
+  "timestamp": 1780433453083,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -54,7 +54,7 @@
     "/assets/images/payments/visa.png": "b9236a1c103440b90252777665065bdfe190e4cd",
     "/assets/images/pokemon-back.png": "4236a31547a801f89eb0063d1c9f86aa5c4bca79",
     "/assets/images/pokemon-icon.png": "4a17b1367c9abe8776f746594e5f73c64339e7eb",
-    "/index.html": "8306a3298a8fbcd20d82a282c1f1ab02bb46f19a",
+    "/index.html": "f50c8bfba92bafb92dc470ddfb9b1a3490e42968",
     "/main-RHSRFFID.js": "68637bf09649a9d07e43836bbbb9f01e17c1f767",
     "/manifest.webmanifest": "b7078c66cea479c206f0805dc912bbe6e4bfa607",
     "/polyfills-RONBT3RY.js": "e2fc940497ab57ce4c244eac30093b88a7f37d06",
