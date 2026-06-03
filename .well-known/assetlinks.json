@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "com.syncvizion.pdexium",
+      "package_name": "com.syncvizion.pdexium",
+      "sha256_cert_fingerprints": [
+        "7F:71:94:F4:6F:19:61:45:5D:C1:C1:C1:DE:83:2F:FD:43:09:61:6F:55:2A:82:45:79:6F:B7:5C:36:95:3C:F2"
+      ]
+    }
+  }
+]
