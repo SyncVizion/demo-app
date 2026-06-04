@@ -3,7 +3,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.syncvizion.pdexium",
+      "package_name": "com.syncvizion.pdexium.app",
       "sha256_cert_fingerprints":
         ["6A:9C:DA:E4:4A:AE:DB:8B:21:00:11:0D:C9:03:E9:A8:12:6C:8B:F1:B0:C2:7F:45:74:67:8C:4A:B6:A5:D4:48"]
     }
